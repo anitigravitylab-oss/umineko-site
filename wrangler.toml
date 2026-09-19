@@ -1,0 +1,9 @@
+name = "umineko-site"
+account_id = "1cc1712ca38fd4e7ccbf83bffc2a0d52"
+compatibility_date = "2026-03-17"
+workers_dev = true
+routes = [{ pattern = "umineko.dev", custom_domain = true }]
+
+[assets]
+directory = "./public"
+not_found_handling = "404-page"

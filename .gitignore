@@ -1,0 +1,5 @@
+.env
+.env.*
+.wrangler/
+.codex-thread
+node_modules/
