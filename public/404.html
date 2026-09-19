@@ -3,20 +3,34 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f9fb">
   <title>ページが見つかりません | うみねこ</title>
-  <meta name="description" content="お探しのページは見つかりませんでした。">
+  <meta name="description" content="お探しのページが見つかりません。うみねこのホームからもう一度お探しください。">
+  <meta name="robots" content="noindex">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="うみねこ">
   <meta property="og:title" content="ページが見つかりません | うみねこ">
-  <meta property="og:description" content="お探しのページは見つかりませんでした。">
+  <meta property="og:description" content="お探しのページが見つかりません。うみねこのホームからもう一度お探しください。">
   <meta property="og:image" content="https://umineko.dev/assets/logo-circle-512.png">
   <meta property="og:image:alt" content="うみねこのロゴ">
+  <meta name="twitter:card" content="summary">
   <link rel="icon" href="/assets/logo-circle-64.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/logo-circle-192.png" sizes="192x192">
-  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/assets/style.css?v=20260920">
+  <script src="/assets/site.js?v=20260920" defer></script>
 </head>
 <body>
-  <main class="page not-found">
-    <h1>ページが見つかりません</h1>
-    <a href="/">ホームへ戻る</a>
-  </main>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="うみねこ ホーム"><span class="brand-mark" aria-hidden="true">u.</span><span>うみねこ<span class="brand-en">umineko</span></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden><span class="menu-label">メニュー</span><span class="menu-lines" aria-hidden="true"></span></button>
+    <nav class="site-nav" id="site-nav" aria-label="メインナビゲーション">
+      <a href="/#products">プロダクト</a><a href="/#approach">大切にしていること</a><a href="/#about">うみねこについて</a><a class="nav-contact" href="/#contact">お問い合わせ <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main class="error-page section-shell" id="main"><span class="eyebrow">PAGE NOT FOUND</span><div class="error-number" aria-hidden="true">404.</div><h1>お探しのページが見つかりません。</h1><p>ページが移動したか、URLが異なっている可能性があります。<br>ホームから、もう一度お探しください。</p><a class="button button-dark" href="/">ホームへ戻る <span class="button-arrow" aria-hidden="true">↗</span></a></main>
+  <footer class="site-footer section-shell"><div class="footer-top"><a class="brand" href="/" aria-label="うみねこ ホーム"><span class="brand-mark" aria-hidden="true">u.</span><span>うみねこ<span class="brand-en">umineko</span></span></a><nav class="footer-nav" aria-label="フッターナビゲーション"><a href="/#products">プロダクト</a><a href="/operator/">事業者情報</a><a href="/#contact">お問い合わせ</a><a href="/#main" class="back-to-top">ページの先頭へ ↑</a></nav></div><div class="footer-wordmark" aria-hidden="true">umineko<span>↗</span></div><div class="footer-bottom"><span>© <span data-year>2026</span> umineko</span><span>INDEPENDENT IDEAS. EVERYDAY CONNECTIONS.</span><span>MADE WITH CURIOSITY.</span></div></footer>
 </body>
 </html>

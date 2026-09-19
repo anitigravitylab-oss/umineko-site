@@ -3,66 +3,110 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>うみねこ</title>
-  <meta name="description" content="うみねこは、Zetter と あめ→はれ をつくって運営しています。">
-  <meta property="og:title" content="うみねこ">
-  <meta property="og:description" content="うみねこは、Zetter と あめ→はれ をつくって運営しています。">
+  <meta name="theme-color" content="#f8f9fb">
+  <title>うみねこ｜人とAIに、新しい日常を。</title>
+  <meta name="description" content="うみねこは、SNSとAIサービスを企画・開発する個人事業です。AIキャラクターと話せるSNS「Zetter」の開発・運営、気持ちに寄り添うSNS「あめ→はれ」の開発に取り組んでいます。">
+  <link rel="canonical" href="https://umineko.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="うみねこ">
+  <meta property="og:title" content="うみねこ｜人とAIに、新しい日常を。">
+  <meta property="og:description" content="SNSとAIサービスをつくる、個人開発のプロダクトスタジオ。Zetterの開発・運営、あめ→はれの開発。">
+  <meta property="og:url" content="https://umineko.dev/">
   <meta property="og:image" content="https://umineko.dev/assets/logo-circle-512.png">
   <meta property="og:image:alt" content="うみねこのロゴ">
+  <meta name="twitter:card" content="summary">
   <link rel="icon" href="/assets/logo-circle-64.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/logo-circle-192.png" sizes="192x192">
-  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/assets/style.css?v=20260920">
+  <script src="/assets/site.js?v=20260920" defer></script>
 </head>
 <body>
-  <div class="page">
-    <header class="site-header">
-      <img src="/assets/logo-circle-64.png" width="28" height="28" alt="うみねこのロゴ">
-      <span>うみねこ</span>
-    </header>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="うみねこ ホーム"><span class="brand-mark" aria-hidden="true">u.</span><span>うみねこ<span class="brand-en">umineko</span></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden><span class="menu-label">メニュー</span><span class="menu-lines" aria-hidden="true"></span></button>
+    <nav class="site-nav" id="site-nav" aria-label="メインナビゲーション">
+      <a href="#products">プロダクト</a><a href="#approach">大切にしていること</a><a href="#about">うみねこについて</a><a class="nav-contact" href="#contact">お問い合わせ <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
 
-    <main>
-      <h1>うみねこ</h1>
-      <p>うみねこは、Zetter と あめ→はれ をつくって運営しています。</p>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-topline"><span class="eyebrow"><span class="status-dot" aria-hidden="true"></span> INDEPENDENT PRODUCT STUDIO</span><span class="hero-index">WEB / AI / COMMUNITY</span></div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1 id="hero-title">人とAIに、<br><span>新しい日常を。</span></h1>
+          <p class="hero-description">話す。つくる。誰かとつながる。<br>うみねこは、SNSとAIサービスの開発を通じて、<br class="desktop-break">日々のなかに、新しい楽しさと居場所をつくります。</p>
+          <a class="button button-dark" href="#products">つくっているもの <span class="button-arrow" aria-hidden="true">↗</span></a>
+          <p class="hero-footnote">小さくつくって、日常に届ける。</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-coordinate art-coordinate-top">FIG. 01 — A NEW CONNECTION</div>
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="art-core"><img class="connection-mesh" src="/assets/connection.svg" width="620" height="620" alt="" fetchpriority="high"></div>
+          <div class="art-label label-human"><span class="label-symbol">○</span> Human <span class="label-dot"></span></div>
+          <div class="art-label label-ai"><span class="label-symbol">✳</span> AI <span class="label-dot"></span></div>
+          <div class="art-caption"><span>ひとつの会話から、<br>世界は少し広がっていく。</span><span class="art-cross">＋</span></div>
+        </div>
+      </div>
+      <div class="hero-bottom"><span>DESIGNED FOR EVERYDAY LIFE.</span><a href="#intro">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
+    </section>
 
-      <section aria-labelledby="services-title">
-        <h2 id="services-title">つくっているもの</h2>
-        <dl class="services">
-          <div class="service">
-            <dt>
-              <img src="/assets/zetter-mark.png" width="40" height="40" loading="lazy" alt="Zetter のロゴ">
-              <a href="https://z-etter.com">Zetter</a>
-            </dt>
-            <dd>
-              <p>パブリックタイムラインを中心にした、シンプルな SNS。AI キャストと会話できる Zetter Cast があります。</p>
-              <p class="legal-links">
-                <a href="https://z-etter.com/terms">利用規約</a>
-                <span aria-hidden="true">/</span>
-                <a href="https://z-etter.com/privacy">プライバシーポリシー</a>
-                <span aria-hidden="true">/</span>
-                <a href="https://z-etter.com/tokushoho">特定商取引法に基づく表記</a>
-              </p>
-            </dd>
+    <section class="intro section-shell" id="intro" aria-labelledby="intro-title">
+      <div class="section-kicker"><span class="section-number">01</span><span class="eyebrow">HELLO, THIS IS UMINEKO.</span></div>
+      <div class="intro-grid" data-reveal>
+        <h2 id="intro-title">技術の先に、<br>使う人の日常がある。</h2>
+        <div class="body-copy"><p>新しい技術は、誰かに使ってもらって初めて、<br class="desktop-break">暮らしのなかの価値になる。</p><p>何気ないことを話せるSNS。<br>想像の世界を一緒に歩くAIキャラクター。<br>うれしい日も、少し疲れた日も立ち寄れる場所。</p><p>うみねこは、自らプロダクトをつくり、<br class="desktop-break">使う人の声を聞きながら、少しずつ育てています。</p></div>
+      </div>
+    </section>
+
+    <section class="products section-shell" id="products" aria-labelledby="products-title">
+      <div class="section-heading"><div><div class="section-kicker"><span class="section-number">02</span><span class="eyebrow">OUR PRODUCTS</span></div><h2 id="products-title">つくっているもの<span class="heading-period">.</span></h2></div><p>それぞれの場所に、<br>それぞれのつながり方を。</p></div>
+      <div class="product-grid">
+        <article class="product product-zetter" id="zetter" aria-labelledby="zetter-title" data-reveal>
+          <div class="product-visual zetter-visual">
+            <div class="visual-topline"><span>01 / ZETTER</span><span>SOCIAL × AI</span></div>
+            <div class="zetter-window" aria-hidden="true">
+              <div class="window-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>z-etter.com</span><span>↗</span></div>
+              <div class="zetter-app"><div class="zetter-sidebar"><strong>Z.</strong><span class="sidebar-active">⌂</span><span>✳</span><span>♡</span><span>⌕</span><span class="sidebar-compose">＋</span></div>
+                <div class="zetter-feed"><div class="feed-title">Zetter <span>なんでもない日常を、また話そう。</span></div><div class="feed-tabs"><span class="active">みんな</span><span>おすすめ</span><span>推し</span></div>
+                  <div class="sample-post"><div class="sample-avatar avatar-blue">s</div><div><div class="sample-name">そら <span>サンプル</span></div><p>AIと一緒につくった曲、<br>思ったよりずっと好きになった。</p><div class="sample-music"><span class="music-play">▶</span><span class="music-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span>MY FIRST SONG</span></div><div class="sample-reactions">♡ <span>↻</span> <span>♧</span></div></div></div>
+                  <div class="sample-post"><div class="sample-avatar avatar-lime">n</div><div><div class="sample-name">なぎ <span>サンプル</span></div><p>今日も、好きなものの話をしよう。</p><div class="sample-reactions">♡ <span>↻</span> <span>♧</span></div></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="cast-preview" aria-hidden="true"><div class="cast-preview-label"><span class="cast-star">✳</span><strong>Zetter Cast</strong><span class="online-dot"></span></div><div class="chat-bubble user-bubble">今日はどんな物語にしよう？</div><div class="chat-bubble cast-bubble">まだ見たことのない街へ、<br>一緒に出かけてみない？</div><span class="cast-preview-caption">YOUR STORY STARTS HERE.</span></div>
+            <span class="visual-caption">投稿・会話は機能紹介用のサンプルです</span>
           </div>
-          <div class="service">
-            <dt>
-              <img src="/assets/amehare-mark.png" width="40" height="40" loading="lazy" alt="あめ→はれ のロゴ">
-              <a href="https://am-hr.com">あめ→はれ</a>
-            </dt>
-            <dd><p>気持ちに合わせて表示先が切り替わる、疲れない SNS。</p></dd>
+          <div class="product-body"><div class="product-title-row"><h3 id="zetter-title">Zetter<span>ゼッター</span></h3><a class="circle-link" href="https://z-etter.com" target="_blank" rel="noopener noreferrer" aria-label="Zetterを開く（新しいタブ）">↗</a></div><p class="product-lead">人とも、AIとも。<br>好きなことから、つながるSNS。</p><p class="product-description">何気ない日常や、AIでつくった作品を共有するSNS。AIキャラクターと会話する「Zetter Cast」では、自分だけのキャラクターをつくり、会話や物語を楽しめます。</p><div class="product-tags"><span>企画・開発・運営</span><span>SNS</span><span>AIチャット</span></div><a class="text-link" href="https://z-etter.com" target="_blank" rel="noopener noreferrer">Zetterを見てみる <span aria-hidden="true">↗</span><span class="sr-only">（新しいタブ）</span></a></div>
+        </article>
+
+        <article class="product product-amehare" id="amehare" aria-labelledby="amehare-title" data-reveal>
+          <div class="product-visual amehare-visual" data-weather="hare">
+            <div class="visual-topline"><span>02 / AME → HARE</span><span>MOOD & COMMUNITY</span></div>
+            <div class="weather-decoration" aria-hidden="true"><div class="sun-disc"></div><div class="rain-lines"><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="weather-window"><div class="weather-brand">あめ<span>→</span>はれ<span class="weather-brand-dot">.</span></div><p class="weather-subtitle">どんな気持ちにも、居場所を。</p><div class="weather-switch" role="group" aria-label="あめはれの紹介イメージを切り替え"><button type="button" data-weather-button="ame" disabled aria-pressed="false" aria-controls="weather-sample"><span aria-hidden="true">☂</span> あめ</button><button type="button" data-weather-button="hare" disabled aria-pressed="true" aria-controls="weather-sample"><span aria-hidden="true">☀</span> はれ</button></div><div class="weather-sample" id="weather-sample" aria-live="polite" aria-atomic="true"><span class="weather-message-icon" aria-hidden="true">☀</span><p class="weather-message">帰り道の空が、<br>今日はちょっときれいだった。</p><span class="weather-message-note">小さなうれしさを、ここに。</span></div></div>
+            <div class="weather-bottom"><span class="weather-bottom-line"></span><span>RAINY DAYS, SUNNY DAYS.</span></div><span class="visual-caption">機能を紹介するイメージです</span>
           </div>
-        </dl>
-      </section>
+          <div class="product-body"><div class="product-title-row"><h3 id="amehare-title">あめ<span class="amehare-title-arrow">→</span>はれ</h3><a class="circle-link" href="https://am-hr.com" target="_blank" rel="noopener noreferrer" aria-label="あめはれを開く（新しいタブ）">↗</a></div><p class="product-lead">晴れの日も、雨の日も。<br>そのままの気持ちでいられるSNS。</p><p class="product-description">うれしいことは「はれ」に、悩みやしんどさは「あめ」に。気持ちに合わせてタイムラインを分けることで、話す人にも、読む人にも無理のない場所を目指しています。</p><div class="product-tags"><span>開発担当</span><span>SNS</span><span>コミュニティ</span></div><p class="product-credit">運営：しゃち / 開発：うみねこ</p><a class="text-link" href="https://am-hr.com" target="_blank" rel="noopener noreferrer">あめ→はれを見てみる <span aria-hidden="true">↗</span><span class="sr-only">（新しいタブ）</span></a></div>
+        </article>
+      </div>
+    </section>
 
-      <section aria-labelledby="operator-title">
-        <h2 id="operator-title">運営者情報</h2>
-        <p>事業者情報は<a href="/operator/">運営者情報ページ</a>に記載しています。</p>
-      </section>
-    </main>
+    <section class="vision" aria-labelledby="vision-title"><div class="vision-inner section-shell"><div class="section-kicker"><span class="section-number">03</span><span class="eyebrow">OUR VISION</span></div><div class="vision-content" data-reveal><p class="vision-overline">AIを、人の世界に。</p><h2 id="vision-title">特別な技術から、<br>あたりまえの存在へ。</h2><div class="vision-bottom"><p>AIと話すことが、誰かにとって日々の楽しみになる。<br>一緒につくったものが、新しい会話のきっかけになる。<br>人とAIが自然に生きる未来を、<br class="mobile-break">使えるプロダクトからつくっていきます。</p><span class="vision-asterisk" aria-hidden="true">✳</span></div></div></div><span class="vision-outline" aria-hidden="true">HUMAN + AI</span></section>
 
-    <footer class="site-footer">
-      <p>© うみねこ</p>
-      <p>連絡先: <a href="mailto:ymdtkru@gmail.com">ymdtkru@gmail.com</a></p>
-    </footer>
-  </div>
+    <section class="approach section-shell" id="approach" aria-labelledby="approach-title"><div class="section-heading"><div><div class="section-kicker"><span class="section-number">04</span><span class="eyebrow">HOW WE BUILD</span></div><h2 id="approach-title">つくるときに、<br>大切にしていること<span class="heading-period">.</span></h2></div><p>つくって終わりではなく、<br>使われるところまで。</p></div><div class="principles">
+      <article class="principle" data-reveal><span class="principle-number">01 /</span><h3>技術より先に、<br>体験を考える。</h3><div><span class="eyebrow">EXPERIENCE FIRST</span><p>新しい機能を増やすこと自体を目的にせず、誰が、どんな場面で、どう楽しめるのかを考える。画面の使いやすさも、会話の心地よさも、ひとつの体験として設計します。</p></div><span class="principle-symbol" aria-hidden="true">◎</span></article>
+      <article class="principle" data-reveal><span class="principle-number">02 /</span><h3>小さく試して、<br>変わりつづける。</h3><div><span class="eyebrow">BUILD, LISTEN, IMPROVE</span><p>まず動くものをつくり、実際に使ってもらう。届いた声や、想像していなかった使われ方から学び、改善する。個人開発の身軽さを、プロダクトの成長につなげます。</p></div><span class="principle-symbol" aria-hidden="true">↗</span></article>
+      <article class="principle" data-reveal><span class="principle-number">03 /</span><h3>機能だけでなく、<br>居場所を育てる。</h3><div><span class="eyebrow">CARE FOR THE COMMUNITY</span><p>人が集まるサービスでは、仕組みが場の空気をつくります。使う人それぞれの距離感を大切にしながら、表示設定やルール、日々の運営まで含めて考え続けます。</p></div><span class="principle-symbol" aria-hidden="true">∿</span></article>
+    </div></section>
+
+    <section class="about section-shell" id="about" aria-labelledby="about-title"><div class="about-grid"><div><div class="section-kicker"><span class="section-number">05</span><span class="eyebrow">ABOUT UMINEKO</span></div><h2 id="about-title">小さなつくり手。<br>広がっていく可能性。</h2><p class="about-description">うみねこは、WebサービスとAIの可能性を探る個人事業です。自ら企画・開発・運営するプロダクトと、開発で関わるサービス。その両方を通じて、人と技術の新しい関係をかたちにしています。</p><a class="text-link" href="/operator/">事業者情報を見る <span aria-hidden="true">↗</span></a></div><dl class="about-details"><div><dt>屋号</dt><dd>うみねこ<span class="detail-en">UMINEKO</span></dd></div><div><dt>事業形態</dt><dd>個人事業</dd></div><div><dt>取り組む領域</dt><dd>Webサービスの企画・開発・運営<br>AIを活用した対話・創作体験<br>オンラインコミュニティの設計</dd></div><div><dt>プロダクト</dt><dd><a href="#zetter">Zetter</a><span class="detail-separator">/</span><a href="#amehare">あめ→はれ</a></dd></div></dl></div></section>
+
+    <section class="contact section-shell" id="contact" aria-labelledby="contact-title"><div class="section-kicker"><span class="section-number">06</span><span class="eyebrow">GET IN TOUCH</span></div><div class="contact-grid"><div><h2 id="contact-title">お話ししましょう<span class="heading-period">.</span></h2><p>サービスについてのお問い合わせ、取材や協業のご相談など。<br class="desktop-break">こちらのメールアドレスまで、お気軽にご連絡ください。</p></div><a class="contact-arrow" href="mailto:ymdtkru@gmail.com" aria-label="うみねこにメールで問い合わせる">↗</a></div><div class="contact-email-row"><a class="contact-email" href="mailto:ymdtkru@gmail.com">ymdtkru@gmail.com</a><button class="copy-email" type="button" data-copy-email="ymdtkru@gmail.com" hidden>アドレスをコピー <span aria-hidden="true">⧉</span></button></div><p class="copy-status" role="status" aria-live="polite"></p><p class="contact-note">各サービスのご利用に関するお問い合わせは、サービス内の窓口もご利用いただけます。</p></section>
+  </main>
+
+  <footer class="site-footer section-shell"><div class="footer-top"><a class="brand" href="/" aria-label="うみねこ ホーム"><span class="brand-mark" aria-hidden="true">u.</span><span>うみねこ<span class="brand-en">umineko</span></span></a><nav class="footer-nav" aria-label="フッターナビゲーション"><a href="#products">プロダクト</a><a href="/operator/">事業者情報</a><a href="#contact">お問い合わせ</a><a href="#main" class="back-to-top">ページの先頭へ ↑</a></nav></div><div class="footer-wordmark" aria-hidden="true">umineko<span>↗</span></div><div class="footer-bottom"><span>© <span data-year>2026</span> umineko</span><span>INDEPENDENT IDEAS. EVERYDAY CONNECTIONS.</span><span>MADE WITH CURIOSITY.</span></div></footer>
 </body>
 </html>
