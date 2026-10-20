@@ -79,9 +79,16 @@ node tests/browser_check.cjs --screenshots /tmp/umineko  # 全幅のスクリー
 
 ## 公開
 
-GitHubへの反映と、Cloudflareへの本番デプロイは別の作業です。
+GitHubへの反映と、Cloudflareへの本番デプロイは別の作業です。GitHubとの自動連携はなく、これまでの公開はすべて `wrangler deploy` で行っています。
 
-- Git連携が設定されている場合は、その結果を確認してください。
-- 設定されていない場合は、既存のCloudflareの公開手順を使ってください。
+```sh
+wrangler deploy --dry-run   # 公開されるファイルの確認
+wrangler deploy             # 本番（umineko.dev）へ公開
+wrangler rollback <バージョンID>   # 問題があったときに前のバージョンへ戻す
+```
 
-アカウントID、ドメイン、配信ディレクトリ、既存のロゴPNGは変更していません。
+Cloudflareの認証情報（`CLOUDFLARE_API_TOKEN`）が必要です。アカウントIDとドメインは `wrangler.toml` にあります。
+
+公開の記録：
+
+- 2026-10-20：全面リニューアルを公開（バージョン `ad7e6941`）。戻す場合の直前のバージョンは `a07b6841`。
