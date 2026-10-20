@@ -330,7 +330,7 @@
       label.textContent = ok ? 'コピーしました' : 'コピー';
       if (status) {
         status.classList.toggle('vh', ok);
-        status.textContent = ok ? 'メールアドレスをコピーしました' : 'コピーできませんでした。お手数ですが、アドレスを選んでコピーしてください。';
+        status.textContent = ok ? 'メールアドレスをコピーしました' : 'コピーできませんでした。お手数ですがアドレスを選んでコピーしてください。';
       }
       window.clearTimeout(timer);
       timer = window.setTimeout(() => {

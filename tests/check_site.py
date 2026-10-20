@@ -141,7 +141,7 @@ def main() -> int:
     copies = [a.get('data-copy') for t, a in index.nodes if 'data-copy' in a]
     c.ok(copies == [EMAIL], 'index.html: copy button carries the contact address')
     index_text = ''.join(index.text)
-    for phrase in ['人類から、', 'コミュニケーション', 'ゼロ', 'Zetter', 'あめ→はれ', '企画・開発・運営', '構想', 'サンプル']:
+    for phrase in ['人類から', 'コミュニケーション', 'ゼロ', 'Zetter', 'あめ→はれ', '企画・開発・運営', '構想', 'サンプル']:
         c.ok(phrase in index_text, f'index.html: missing text "{phrase}"')
 
     # Operator page keeps the disclosure wording
