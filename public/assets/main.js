@@ -293,25 +293,26 @@
     select(Math.max(0, tabs.findIndex((tab) => tab.getAttribute('aria-selected') === 'true')));
   });
 
-  /* Horizontal carousels: page dots */
-  document.querySelectorAll('[data-carousel]').forEach((list) => {
-    const dots = list.parentElement.querySelector('[data-carousel-dots]');
-    if (!dots) return;
-    const dotEls = [...dots.children];
-    const cards = [...list.children];
-    const update = () => {
-      const x = list.scrollLeft;
-      let nearest = 0;
-      cards.forEach((card, i) => {
-        if (Math.abs(card.offsetLeft - list.offsetLeft - x) < Math.abs(cards[nearest].offsetLeft - list.offsetLeft - x)) nearest = i;
-      });
-      if (list.scrollLeft + list.clientWidth >= list.scrollWidth - 4) nearest = cards.length - 1;
-      dotEls.forEach((dot, i) => dot.classList.toggle('is-active', i === nearest));
+  /* Hero: ripples spread from the word ゼロ */
+  const zero = document.querySelector('[data-zero]');
+  const ripples = document.querySelector('[data-ripples]');
+  if (zero && ripples) {
+    // Layout offsets ignore the entrance animation's transforms
+    const place = () => {
+      const host = ripples.offsetParent;
+      let x = zero.offsetWidth / 2;
+      let y = zero.offsetHeight / 2;
+      for (let el = zero; el && el !== host; el = el.offsetParent) {
+        x += el.offsetLeft;
+        y += el.offsetTop;
+      }
+      ripples.style.left = `${x}px`;
+      ripples.style.top = `${y}px`;
     };
-    list.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
-    window.addEventListener('resize', update);
-    update();
-  });
+    place();
+    window.addEventListener('resize', place);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+  }
 
   /* Name card flip */
   document.querySelectorAll('[data-flip]').forEach((card) => {
@@ -335,6 +336,7 @@
   /* Copy e-mail address */
   document.querySelectorAll('[data-copy]').forEach((button) => {
     const status = button.parentElement.querySelector('[data-copy-status]');
+    const label = button.querySelector('[data-copy-label]') || button;
     let timer = 0;
     button.addEventListener('click', async () => {
       const text = button.dataset.copy;
@@ -358,7 +360,7 @@
         }
       }
       button.classList.toggle('is-done', ok);
-      button.textContent = ok ? 'コピーしました' : 'コピー';
+      label.textContent = ok ? 'コピーしました' : 'コピー';
       if (status) {
         status.classList.toggle('vh', ok);
         status.textContent = ok ? 'メールアドレスをコピーしました' : 'コピーできませんでした。お手数ですが、アドレスを選んでコピーしてください。';
@@ -366,7 +368,7 @@
       window.clearTimeout(timer);
       timer = window.setTimeout(() => {
         button.classList.remove('is-done');
-        button.textContent = 'コピー';
+        label.textContent = 'コピー';
         if (status) status.textContent = '';
       }, 2600);
     });

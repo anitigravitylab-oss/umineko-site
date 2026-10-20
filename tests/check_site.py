@@ -159,6 +159,27 @@ def main() -> int:
     for old in ['assets/style.css', 'assets/site.js', 'assets/connection.svg']:
         c.ok(not (PUBLIC / old).exists(), f'stale asset still present: {old}')
 
+    # Web font: self-hosted subset that covers every character on the pages
+    font = PUBLIC / 'assets/fonts/PretendardJP-subset.woff2'
+    c.ok(font.exists(), 'web font subset is missing (run tools/build_font.py)')
+    c.ok((PUBLIC / 'assets/fonts/OFL.txt').exists(), 'font license (OFL.txt) is missing')
+    for name in PAGES:
+        c.ok('PretendardJP-subset.woff2' in raw[name], f'{name}: font is not preloaded')
+    try:
+        from fontTools.ttLib import TTFont
+    except ImportError:
+        print('SKIP: font coverage (pip install fonttools brotli to enable)')
+    else:
+        cmap = TTFont(font).getBestCmap()
+        used = set()
+        for name, doc in docs.items():
+            used |= set(''.join(doc.text))
+            used |= {ch for t, a in doc.nodes for k, v in a.items() if k in ('alt', 'aria-label') and v for ch in v}
+        js = (PUBLIC / 'assets/main.js').read_text(encoding='utf-8')
+        used |= set(''.join(re.findall(r"'([^']*)'", js)))
+        missing = sorted(ch for ch in used if ch.strip() and ord(ch) not in cmap)
+        c.ok(not missing, f'font subset lacks {"".join(missing)} (run tools/build_font.py)')
+
     # Delivery settings
     wrangler = (ROOT / 'wrangler.toml').read_text(encoding='utf-8')
     c.ok('directory = "./public"' in wrangler and 'not_found_handling = "404-page"' in wrangler, 'wrangler.toml: assets settings changed')

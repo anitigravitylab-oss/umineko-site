@@ -16,7 +16,7 @@ const path = require('path');
 const { chromium } = require('playwright');
 
 const PUBLIC = path.resolve(__dirname, '..', 'public');
-const TYPES = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.png': 'image/png', '.xml': 'application/xml', '.txt': 'text/plain' };
+const TYPES = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.png': 'image/png', '.woff2': 'font/woff2', '.xml': 'application/xml', '.txt': 'text/plain' };
 const WIDTHS = [320, 375, 390, 768, 1024, 1440, 1920];
 const EMAIL = 'ymdtkru@gmail.com';
 const shotDir = (() => {
@@ -95,6 +95,17 @@ async function interactionChecks(browser, base, width) {
   await revealAll(page);
   const label = `${width}px`;
 
+  // Web font
+  const fontReady = await page.evaluate(async () => { await document.fonts.ready; return document.fonts.check('700 32px "Pretendard JP"', '人類から'); });
+  check(fontReady, `${label} web font: Pretendard JP is loaded`);
+  const ripple = await page.evaluate(async () => {
+    await Promise.all([...document.querySelectorAll('.hero-title .ln')].flatMap((el) => el.getAnimations()).map((a) => a.finished));
+    const zero = document.querySelector('[data-zero]').getBoundingClientRect();
+    const rings = document.querySelector('[data-ripples]').getBoundingClientRect();
+    return Math.hypot(zero.left + zero.width / 2 - rings.left, zero.top + zero.height / 2 - rings.top);
+  });
+  check(ripple < 4, `${label} hero: ripples start from ゼロ (off by ${Math.round(ripple)}px)`);
+
   // Story stepper
   const story = page.locator('.story');
   check(await story.getAttribute('data-step') === '1', `${label} story starts at step 1`);
@@ -163,6 +174,7 @@ async function interactionChecks(browser, base, width) {
   await page.locator('[data-copy]').click();
   check(await page.evaluate(() => navigator.clipboard.readText()) === EMAIL, `${label} copy: clipboard holds the address`);
   check((await page.locator('[data-copy-status]').textContent()).includes('コピーしました'), `${label} copy: success is announced`);
+  check((await page.locator('[data-copy-label]').textContent()) === 'コピーしました', `${label} copy: button shows the result`);
   await page.evaluate(() => {
     navigator.clipboard.writeText = () => Promise.reject(new Error('denied'));
     document.execCommand = () => false;
@@ -215,7 +227,7 @@ async function fallbackChecks(browser, base) {
   await calmPage.goto(base + '/', { waitUntil: 'networkidle' });
   const hidden = await calmPage.evaluate(() => [...document.querySelectorAll('[data-reveal]')].filter((el) => getComputedStyle(el).opacity !== '1').length);
   check(hidden === 0, `reduced motion: ${hidden} sections still hidden`);
-  const ripple = await calmPage.evaluate(() => getComputedStyle(document.querySelector('.ripple')).animationIterationCount);
+  const ripple = await calmPage.evaluate(() => getComputedStyle(document.querySelector('.hero-ripples i')).animationIterationCount);
   check(ripple === '1', 'reduced motion: decorative loops stop');
   await calm.close();
 }

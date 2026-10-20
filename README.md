@@ -4,7 +4,7 @@
 
 ## 構成
 
-HTML、CSS、少量のJavaScriptだけで作った静的サイトです。ビルドの工程はありません。外部のフォント、スクリプト、ライブラリーも使っていません。配信はCloudflare Workersの静的アセットで、`wrangler.toml` は変更していません。
+HTML、CSS、少量のJavaScriptだけで作った静的サイトです。ビルドの工程はありません。外部のスクリプトやライブラリー、CDNは使っていません。フォント（Pretendard JP）も、サイトで使う文字に絞ったものを同梱しています。配信はCloudflare Workersの静的アセットで、`wrangler.toml` は変更していません。
 
 - `public/index.html`：トップページ。次の6章でできています。
   - 01 なぜ：タップで進む4ステップのストーリー
@@ -18,10 +18,12 @@ HTML、CSS、少量のJavaScriptだけで作った静的サイトです。ビル
 - `public/assets/main.css`：配色・余白・レイアウト・動き。色は先頭のカスタムプロパティで調整できます。
 - `public/assets/main.js`：メニュー、ステップ表示、タブ、カード切り替え、名前カード、メールアドレスのコピー、スクロール演出
 - `public/assets/og.png`：SNS共有用の画像（1200×630）
+- `public/assets/fonts/`：Pretendard JP をサイトで使う文字だけに絞ったもの（`PretendardJP-subset.woff2`）と、そのライセンス（`OFL.txt`）
+- `tools/build_font.py`：上のフォントを作り直すスクリプト。本文の文字を変えたら実行してください（`pip install fonttools brotli` が必要）
 - `public/assets/logo-*.png`, `*-mark-160.png`：ロゴとサービスマークの縮小版
 - `public/_headers`, `robots.txt`, `sitemap.xml`：配信ヘッダーと検索エンジン向けの設定
 
-カモメのシルエットは、既存ロゴの絵柄からベクターに起こしたものです。各HTMLの先頭に `<symbol id="gull">` として埋め込んであります。
+カモメのシルエットは、既存ロゴの絵柄からベクターに起こしたものです。アイコンと一緒に、トップページの先頭に `<symbol>` として埋め込んであります。
 
 ## ローカル確認
 
@@ -48,6 +50,7 @@ node tests/browser_check.cjs --screenshots /tmp/umineko  # 全幅のスクリー
 - 画像の代替テキスト
 - 新しいタブで開くリンクの `rel` 属性
 - 表記（うみねこ／Zetter／あめ→はれ）
+- フォントに、ページで使う文字がすべて含まれているか（fonttools がある場合）
 - 連絡先の一致
 - 配信設定
 
@@ -56,6 +59,7 @@ node tests/browser_check.cjs --screenshots /tmp/umineko  # 全幅のスクリー
 - 320〜1920pxの7つの幅で、横スクロールが出ないか、画像が欠けていないか
 - 操作：ステップ表示、タブ（矢印キーを含む）、スマホでのカード同期、名前カード、メニュー
 - メールアドレスのコピー：成功した場合と拒否された場合
+- Webフォントの読み込みと、波紋が「ゼロ」から広がっているか
 - JavaScriptを切った状態と、モーションを減らす設定での表示
 
 本番のHTTPヘッダー、iPhone実機のSafari、外部サイトへの実際の遷移は、このテストの範囲外です。
