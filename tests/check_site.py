@@ -141,12 +141,12 @@ def main() -> int:
     copies = [a.get('data-copy') for t, a in index.nodes if 'data-copy' in a]
     c.ok(copies == [EMAIL], 'index.html: copy button carries the contact address')
     index_text = ''.join(index.text)
-    for phrase in ['人類から、', 'コミュニケーション', 'ゼロ', 'Zetter', 'あめ→はれ', '運営：しゃち', '構想', 'サンプル']:
+    for phrase in ['人類から、', 'コミュニケーション', 'ゼロ', 'Zetter', 'あめ→はれ', '企画・開発・運営', '構想', 'サンプル']:
         c.ok(phrase in index_text, f'index.html: missing text "{phrase}"')
 
     # Operator page keeps the disclosure wording
     operator_text = ''.join(docs['operator/index.html'].text)
-    for phrase in ['個人事業', '請求があった場合に、遅滞なく電子メールその他の方法で提供します。', EMAIL]:
+    for phrase in ['個人事業', '代表者', 'ymd（活動名）', '請求があった場合に、遅滞なく電子メールその他の方法で提供します。', EMAIL, ZETTER_EMAIL]:
         c.ok(phrase in operator_text, f'operator: missing "{phrase}"')
 
     # Assets

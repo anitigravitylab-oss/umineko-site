@@ -1208,6 +1208,7 @@ html:not(.js) .flip-back { transform: none; }
 .info small { display: block; color: var(--fg-3); font-size: 13px; }
 .info a { text-underline-offset: 4px; }
 .info ul { display: grid; gap: 4px; }
+.info .services { gap: 12px; }
 @media (min-width: 760px) { .info > div { grid-template-columns: 14em 1fr; gap: 24px; } }
 .back-home { margin-top: 40px; }
 
