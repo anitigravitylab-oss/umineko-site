@@ -107,7 +107,7 @@ async function interactionChecks(browser, base, width) {
   // Web fonts
   const fonts = await page.evaluate(async () => {
     await document.fonts.ready;
-    return [document.fonts.check('800 32px "Pretendard JP"', '人類から'), document.fonts.check('italic 40px "Instrument Serif"', '0')];
+    return [document.fonts.check('800 32px "Pretendard JP"', '人類の'), document.fonts.check('italic 40px "Instrument Serif"', '0')];
   });
   check(fonts[0], `${label} web font: Pretendard JP is loaded`);
   check(fonts[1], `${label} web font: Instrument Serif is loaded`);
