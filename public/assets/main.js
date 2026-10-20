@@ -361,7 +361,7 @@
       button.textContent = ok ? 'コピーしました' : 'コピー';
       if (status) {
         status.classList.toggle('vh', ok);
-        status.textContent = ok ? 'メールアドレスをコピーしました' : 'コピーできませんでした。アドレスを長押しして選択してください。';
+        status.textContent = ok ? 'メールアドレスをコピーしました' : 'コピーできませんでした。お手数ですが、アドレスを選んでコピーしてください。';
       }
       window.clearTimeout(timer);
       timer = window.setTimeout(() => {

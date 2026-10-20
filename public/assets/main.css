@@ -561,7 +561,9 @@ h2 {
 .stepper-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .step-count { color: var(--ink-3); font-family: var(--mono); font-size: 13px; letter-spacing: .08em; }
 html:not(.js) .stepper-ui { display: none !important; }
-.js [data-items] > li:not(.is-active) { display: none; }
+.js [data-items] { display: grid; }
+.js [data-items] > li { grid-area: 1 / 1; }
+.js [data-items] > li:not(.is-active) { visibility: hidden; }
 .js [data-items] > li.is-active { animation: step-in .55s var(--ease) both; }
 @keyframes step-in { from { opacity: 0; transform: translateY(10px); } }
 [data-stage] { cursor: pointer; -webkit-user-select: none; user-select: none; touch-action: pan-y; }
@@ -582,6 +584,11 @@ html:not(.js) [data-stage] { cursor: default; }
   animation: nudge 2.4s ease-in-out infinite;
 }
 @keyframes nudge { 50% { transform: translateX(-4px); } }
+.hint-click { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .hint-touch { display: none; }
+  .hint-click { display: inline; }
+}
 .is-touched .tap-hint { opacity: 0; }
 
 /* ---------- 01 why / story ---------- */
@@ -735,7 +742,6 @@ html:not(.js) [data-stage] { cursor: default; }
   font-feature-settings: "palt";
 }
 .story-steps p, .concept-steps p { margin-top: 10px; color: var(--ink-2); line-height: 1.95; }
-.js .story-steps { min-height: 10.5em; }
 html:not(.js) .story-steps { display: grid; gap: 24px; counter-reset: s; }
 html:not(.js) .story-steps li::before, html:not(.js) .concept-steps li::before {
   counter-increment: s;
@@ -759,7 +765,6 @@ html:not(.js) .story-steps li::before, html:not(.js) .concept-steps li::before {
   .story .step-bars { grid-column: 1 / -1; }
   .story-stage { grid-row: 2 / 4; height: 440px; margin-top: 14px; }
   .story-steps { align-self: center; margin-top: 14px; padding-right: 12px; }
-  .js .story-steps { min-height: 0; }
   .story .stepper-nav { align-self: end; margin-top: 0; padding-right: 12px; }
   .t1 { top: 16%; left: 9%; }
   .t2 { top: 30%; right: 9%; }
@@ -1207,7 +1212,6 @@ html:not(.js) .product + .product { margin-top: 96px; padding-top: 64px; border-
 @keyframes halo { 50% { fill: rgba(255, 138, 107, .1); } }
 .concept-steps { margin-top: 20px; padding: 0 4px; }
 .concept-steps p { color: rgba(255, 255, 255, .72); }
-.js .concept-steps { min-height: 9.5em; }
 html:not(.js) .concept-steps { display: grid; gap: 22px; counter-reset: s; }
 .concept .stepper-nav { margin-top: 18px; padding: 0 4px; }
 @media (min-width: 960px) {
@@ -1471,6 +1475,7 @@ html:not(.js) .flip-back { transform: none; }
 @media print {
   .site-header, .menu, .hero-sea, .hero-gull, .stepper-ui, .tabs, .copy-btn { display: none !important; }
   .js [data-reveal] { opacity: 1 !important; transform: none !important; }
-  .js [data-items] > li { display: block !important; }
+  .js [data-items] { display: block !important; }
+  .js [data-items] > li { visibility: visible !important; }
   .product[hidden] { display: grid !important; }
 }
