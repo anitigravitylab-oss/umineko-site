@@ -178,7 +178,11 @@ def main() -> int:
             used |= {ch for t, a in doc.nodes for k, v in a.items() if k in ('alt', 'aria-label') and v for ch in v}
         js = (PUBLIC / 'assets/main.js').read_text(encoding='utf-8')
         used |= set(''.join(re.findall(r"'([^']*)'", js)))
-        missing = sorted(ch for ch in used if ch.strip() and ord(ch) not in cmap)
+        # Emoji are drawn by the device's emoji font, not the web font
+        def is_emoji(ch: str) -> bool:
+            cp = ord(ch)
+            return cp >= 0x1F000 or 0x2600 <= cp <= 0x27BF or cp in (0xFE0F, 0x200D)
+        missing = sorted(ch for ch in used if ch.strip() and not is_emoji(ch) and ord(ch) not in cmap)
         c.ok(not missing, f'font subset lacks {"".join(missing)} (run tools/build_font.py)')
 
     # Delivery settings

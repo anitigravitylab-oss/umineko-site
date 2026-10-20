@@ -22,9 +22,9 @@
   <link rel="apple-touch-icon" href="/assets/logo-circle-192.png" sizes="192x192">
   <link rel="preload" href="/assets/fonts/PretendardJP-subset.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/InstrumentSerif-Italic-subset.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/main.css?v=20261020d">
+  <link rel="stylesheet" href="/assets/main.css?v=20261020e">
   <script>document.documentElement.classList.add('js')</script>
-  <script src="/assets/main.js?v=20261020d" defer></script>
+  <script src="/assets/main.js?v=20261020e" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"うみねこ","url":"https://umineko.dev/","logo":"https://umineko.dev/assets/logo-circle-512.png","email":"contact@umineko.dev"}</script>
 </head>
 <body>
@@ -47,9 +47,14 @@
     <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.3"/></symbol>
     <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
     <symbol id="i-send" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
-    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></symbol>
     <symbol id="i-spark" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2.5c.7 4.6 2.9 6.8 7.5 7.5v1.9c-4.6.7-6.8 2.9-7.5 7.5h-1.9c-.7-4.6-2.9-6.8-7.5-7.5V10c4.6-.7 6.8-2.9 7.5-7.5z"/></symbol>
-    <symbol id="i-rain" viewBox="0 0 24 24"><path d="M18.5 15.5a4.5 4.5 0 0 0-1-8.9A6 6 0 0 0 6 8.5a3.5 3.5 0 0 0 .5 7"/><path d="M8.5 18.5l-1 2M12.5 18.5l-1 2M16.5 18.5l-1 2"/></symbol>
+    <symbol id="i-cloud-sun" viewBox="0 0 24 24"><circle cx="9" cy="9" r="3.6" fill="currentColor"/><path d="M9 1.9v1.4M1.9 9h1.4M3.9 3.9l1 1M14.1 3.9l-1 1M3.9 14.1l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M10.5 21h8.2a3.8 3.8 0 0 0 .5-7.57A5.3 5.3 0 0 0 9.4 14a3.6 3.6 0 0 0 1.1 7z" fill="currentColor"/></symbol>
+    <symbol id="i-cloud-rain" viewBox="0 0 24 24"><path d="M6.8 15.5h10.4a4.2 4.2 0 0 0 .6-8.36A6 6 0 0 0 6.3 7.6a4 4 0 0 0 .5 7.9z" fill="currentColor"/><path d="M8.6 18.2l-.9 2.4M12.6 18.2l-.9 2.4M16.6 18.2l-.9 2.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M11 4.5H6.5a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V13"/><path d="M17.6 3.6a2 2 0 0 1 2.8 2.8L12 14.8l-3.5.7.7-3.5z"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path d="M21 3 10.2 13.8M21 3l-6.6 18-4.2-7.2L3 9.6z"/></symbol>
+    <symbol id="i-xmark" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-eye-slash" viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 6.1c.5-.1.9-.1 1.4-.1 5.5 0 9 6 9 6a15.6 15.6 0 0 1-2.6 3.3M6.5 7.6C4.3 9.2 3 12 3 12s3.5 6 9 6c1.6 0 3-.4 4.3-1.1M9.9 9.9a3 3 0 0 0 4.2 4.2"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V3.5M7.5 8 12 3.5 16.5 8M4.5 14v4.5a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V14"/></symbol>
   </svg>
 
   <header class="site-header" data-header data-tone="blue">
@@ -322,27 +327,28 @@
             <div class="p-device" data-stage aria-hidden="true">
               <div class="device">
                 <div class="screen-area">
-                  <div class="screen s1 ah">
-                    <div class="ah-bar">あめ→はれ</div>
-                    <div class="ah-compose" style="--i:0">
-                      <p class="ah-compose-text">今日は、ちょっとしんどかった。<span class="caret"></span></p>
-                      <div class="ah-compose-foot"><span>15/280</span><span class="ah-btn">投稿する</span></div>
+                  <div class="screen s1 ah ah-hare">
+                    <div class="ah-header"><span class="ah-me"><svg class="ico"><use href="#i-user"/></svg></span><svg class="ah-mark"><use href="#i-cloud-sun"/></svg><span class="ah-toggle to-ame"><svg><use href="#i-cloud-rain"/></svg></span></div>
+                    <div class="ah-list"><div class="ah-post"><span class="ah-av av-c"></span><div><p class="ah-meta"><b>ゆう</b><span>@yu</span><span>·</span><span>1分</span></p><p class="ah-text">新しい本、読みはじめた。</p><p class="ah-acts"><span><svg class="ico"><use href="#i-comment"/></svg>0</span><span class=""><i>🌸</i>3</span><span><svg class="ico"><use href="#i-share"/></svg></span></p></div></div><div class="ah-post"><span class="ah-av av-d"></span><div><p class="ah-meta"><b>ひより</b><span>@hiyori</span><span>·</span><span>5分</span></p><p class="ah-text">帰り道の空が、ちょっときれいだった。</p><p class="ah-acts"><span><svg class="ico"><use href="#i-comment"/></svg>1</span><span class=""><i>🌸</i>9</span><span><svg class="ico"><use href="#i-share"/></svg></span></p></div></div></div>
+                    <div class="ah-nav"><svg class="ico on"><use href="#i-home"/></svg><svg class="ico"><use href="#i-bell"/></svg><svg class="ico"><use href="#i-user"/></svg></div><span class="ah-fab"><svg class="ico"><use href="#i-pen"/></svg></span>
+                    <span class="ah-overlay"></span>
+                    <div class="ah-sheet">
+                      <div class="ah-sheet-head"><svg class="ico ah-close"><use href="#i-xmark"/></svg><span class="ah-send"><svg class="ico"><use href="#i-plane"/></svg></span></div>
+                      <div class="ah-sheet-body"><span class="ah-av av-me"></span><div class="ah-editor"><p class="ah-ph">いまの気持ちが「はれ」か「あめ」に振り分けられます</p><p class="ah-typed">今日は、ちょっとしんどかった。<span class="caret"></span></p></div></div>
+                      <div class="ah-sheet-foot"><svg class="ico"><use href="#i-eye-slash"/></svg><span>15/280</span></div>
                     </div>
-                    <p class="ah-hint" style="--i:1">弱音も、そのまま書いていい。</p>
+                    <p class="ah-chip"><i></i>空模様をみています…</p>
+                    <div class="ah-toast"><p>『あめ』タイムラインにそっと置きました🍵</p><span>見に行く</span></div>
                   </div>
-                  <div class="screen s2 ah">
-                    <div class="ah-bar">あめ→はれ</div>
-                    <div class="ah-tabs"><span><svg class="ico"><use href="#i-sun"/></svg>はれ</span><span class="on rain"><svg class="ico"><use href="#i-rain"/></svg>あめ</span></div>
-                    <div class="ah-post rain" style="--i:0"><p class="ah-who">あなた<span>たった今</span></p><p>今日は、ちょっとしんどかった。</p><p class="ah-acts"><svg class="ico"><use href="#i-heart"/></svg>1</p></div>
-                    <div class="ah-post rain" style="--i:1"><p class="ah-who">しずく<span>20分</span></p><p>なんとなく、何もしたくない日。</p><p class="ah-acts"><svg class="ico"><use href="#i-heart"/></svg>4</p></div>
-                    <p class="ah-hint" style="--i:2">気持ちに合わせて、表示先が切り替わる。</p>
+                  <div class="screen s2 ah ah-ame">
+                    <div class="ah-header"><span class="ah-me"><svg class="ico"><use href="#i-user"/></svg></span><svg class="ah-mark"><use href="#i-cloud-rain"/></svg><span class="ah-toggle to-hare"><svg><use href="#i-cloud-sun"/></svg></span></div>
+                    <div class="ah-list"><div class="ah-post" style="--i:0"><span class="ah-av av-me"></span><div><p class="ah-meta"><b>あなた</b><span>@you</span><span>·</span><span>たった今</span></p><p class="ah-text">今日は、ちょっとしんどかった。</p><p class="ah-acts"><span><svg class="ico"><use href="#i-comment"/></svg>0</span><span class=""><i>🍵</i>0</span></p></div></div><div class="ah-post" style="--i:1"><span class="ah-av av-e"></span><div><p class="ah-meta"><b>しずく</b><span>@shizuku</span><span>·</span><span>20分</span></p><p class="ah-text">なんとなく、何もしたくない日。</p><p class="ah-acts"><span><svg class="ico"><use href="#i-comment"/></svg>2</span><span class="tea-on"><i>🍵</i>5</span></p></div></div><div class="ah-post" style="--i:2"><span class="ah-av av-f"></span><div><p class="ah-meta"><b>みなと</b><span>@minato</span><span>·</span><span>1時間</span></p><p class="ah-text">やることが多すぎて、ちょっと疲れた。</p><p class="ah-acts"><span><svg class="ico"><use href="#i-comment"/></svg>1</span><span class=""><i>🍵</i>8</span></p></div></div></div>
+                    <div class="ah-nav"><svg class="ico on"><use href="#i-home"/></svg><svg class="ico"><use href="#i-bell"/></svg><svg class="ico"><use href="#i-user"/></svg></div><span class="ah-fab"><svg class="ico"><use href="#i-pen"/></svg></span>
                   </div>
-                  <div class="screen s3 ah">
-                    <div class="ah-bar">あめ→はれ</div>
-                    <div class="ah-tabs"><span class="on sun"><svg class="ico"><use href="#i-sun"/></svg>はれ</span><span><svg class="ico"><use href="#i-rain"/></svg>あめ<i class="ah-dot"></i></span></div>
-                    <div class="ah-post" style="--i:0"><p class="ah-who">ひより<span>5分</span></p><p>帰り道の空が、ちょっときれいだった。</p><p class="ah-acts liked"><svg class="ico"><use href="#i-heart"/></svg>9</p></div>
-                    <div class="ah-post" style="--i:1"><p class="ah-who">こはる<span>32分</span></p><p>新しいマグカップ、いい感じ。</p><p class="ah-acts"><svg class="ico"><use href="#i-heart"/></svg>6</p></div>
-                    <p class="ah-hint" style="--i:2">あめの空も、見に行けばそこにある。</p>
+                  <div class="screen s3 ah ah-hare">
+                    <div class="ah-header"><span class="ah-me"><svg class="ico"><use href="#i-user"/></svg></span><svg class="ah-mark"><use href="#i-cloud-sun"/></svg><span class="ah-toggle to-ame"><svg><use href="#i-cloud-rain"/></svg><i class="ah-dot"></i></span></div>
+                    <div class="ah-list"><div class="ah-post" style="--i:0"><span class="ah-av av-d"></span><div><p class="ah-meta"><b>ひより</b><span>@hiyori</span><span>·</span><span>5分</span></p><p class="ah-text">帰り道の空が、ちょっときれいだった。</p><p class="ah-acts"><span><svg class="ico"><use href="#i-comment"/></svg>1</span><span class="flower-on"><i>🌸</i>9</span><span><svg class="ico"><use href="#i-share"/></svg></span></p></div></div><div class="ah-post" style="--i:1"><span class="ah-av av-g"></span><div><p class="ah-meta"><b>こはる</b><span>@koharu</span><span>·</span><span>32分</span></p><p class="ah-text">新しいマグカップ、いい感じ。</p><p class="ah-acts"><span><svg class="ico"><use href="#i-comment"/></svg>0</span><span class=""><i>🌸</i>6</span><span><svg class="ico"><use href="#i-share"/></svg></span></p></div></div><div class="ah-post" style="--i:2"><span class="ah-av av-c"></span><div><p class="ah-meta"><b>ゆう</b><span>@yu</span><span>·</span><span>1時間</span></p><p class="ah-text">新しい本、読みはじめた。</p><p class="ah-acts"><span><svg class="ico"><use href="#i-comment"/></svg>0</span><span class=""><i>🌸</i>3</span><span><svg class="ico"><use href="#i-share"/></svg></span></p></div></div></div>
+                    <div class="ah-nav"><svg class="ico on"><use href="#i-home"/></svg><svg class="ico"><use href="#i-bell"/></svg><svg class="ico"><use href="#i-user"/></svg></div><span class="ah-fab"><svg class="ico"><use href="#i-pen"/></svg></span>
                   </div>
                 </div>
               </div>
@@ -356,11 +362,11 @@
               </li>
               <li class="feature" data-item>
                 <button class="feature-btn" type="button" data-goto="2" aria-pressed="false"><span class="feature-num">02</span><span class="feature-title"><span class="ph">気持ちに合わせて、</span><span class="ph">表示先が分かれる。</span></span></button>
-                <p>うれしい気持ちは「はれ」に、しんどい気持ちは「あめ」に。読む人も、急に重い言葉に出会わずにすみます。</p>
+                <p>投稿すると、いまの気持ちに合わせて「はれ」か「あめ」に振り分けられます。読む人も、急に重い言葉に出会わずにすみます。</p>
               </li>
               <li class="feature" data-item>
                 <button class="feature-btn" type="button" data-goto="3" aria-pressed="false"><span class="feature-num">03</span><span class="feature-title"><span class="ph">隠しすぎない、</span><span class="ph">ちょうどいい距離。</span></span></button>
-                <p>まったく見えなければ、SNSに書く意味がありません。見えすぎず、でも、ちゃんと届く。そのバランスを、仕組みでつくっています。</p>
+                <p>まったく見えなければ、SNSに書く意味がありません。「あめ」は、右上のボタンからいつでも見に行ける場所にあります。見えすぎず、でも、ちゃんと届く距離です。</p>
               </li>
             </ol>
 

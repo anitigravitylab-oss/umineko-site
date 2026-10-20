@@ -795,30 +795,132 @@ html:not(.js) .story-steps li::before, html:not(.js) .concept-steps li::before {
     linear-gradient(160deg, #e8f4ff, #c9e3ff);
 }
 
-/* あめ→はれ */
-.ah { padding-top: 40px; background: #ebf1f5; color: #4a4a4a; }
-.ah-bar { display: grid; place-items: center; height: 40px; margin-top: 2px; background: #7db9de; color: #fff; font-size: 14px; font-weight: 700; letter-spacing: .04em; }
-.ah-compose { margin: 14px 12px 0; padding: 14px; border-radius: 16px; background: #fff; box-shadow: 0 0 0 1px #d7e1e8; }
-.ah-compose-text { min-height: 92px; font-size: 13.5px; font-weight: 500; }
-.caret { display: inline-block; width: 1.5px; height: 1.1em; margin-left: 2px; vertical-align: -3px; background: #7db9de; animation: caret 1s steps(1) infinite; }
-@keyframes caret { 50% { opacity: 0; } }
-.ah-compose-foot { display: flex; align-items: center; justify-content: space-between; color: #888; font-size: 11px; }
-.ah-btn { padding: 6px 16px; border-radius: 999px; background: #f9d05e; color: #4a4a4a; font-size: 12px; font-weight: 700; }
-.ah-hint { margin: 14px 12px 0; color: #888; font-size: 11.5px; font-weight: 600; text-align: center; }
-.ah-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 12px 12px 10px; padding: 4px; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px #d7e1e8; font-size: 12px; font-weight: 700; }
-.ah-tabs span { position: relative; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 6px 0; border-radius: 999px; color: #888; }
-.ah-tabs .ico { width: 14px; height: 14px; }
-.ah-tabs .on.sun { background: #f9d05e; color: #4a4a4a; }
-.ah-tabs .on.rain { background: #7db9de; color: #fff; }
-.ah-dot { position: absolute; top: 6px; right: 26%; width: 6px; height: 6px; border-radius: 50%; background: #7db9de; }
-.ah-post { margin: 0 12px 8px; padding: 10px 12px; border-radius: 12px; background: #fff; box-shadow: 0 0 0 1px #d7e1e8; font-size: 12.5px; }
-.ah-post.rain { background: #f6f9fb; }
-.ah-who { display: flex; align-items: baseline; gap: 6px; margin-bottom: 2px; font-size: 11.5px; font-weight: 700; }
-.ah-who span { color: #888; font-size: 10.5px; font-weight: 500; }
-.ah-acts { display: flex; align-items: center; gap: 4px; margin-top: 4px; color: #aaa; font-size: 10.5px; }
+/* あめ→はれ: はれ (main) and あめ (sub) themes follow the app's own colours */
+.ah {
+  --ah-hbg: #7db9de; --ah-hfg: #fff; --ah-bg: #fff; --ah-card: linear-gradient(180deg, #f7fafc, #fff);
+  --ah-text: #4a4a4a; --ah-sub: #888; --ah-line: #c9dde9; --ah-hover: #dde8ef; --ah-accent: #f9d05e;
+  --ah-nav: #fff; --ah-icon: #7db9de; --ah-icon-on: #5d9fc8;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--ah-bg);
+  color: var(--ah-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+}
+.ah-ame {
+  --ah-hbg: #2d2d2d; --ah-hfg: #e0e0e0; --ah-bg: #000; --ah-card: #000;
+  --ah-text: #e0e0e0; --ah-sub: #999; --ah-line: #585858; --ah-hover: #2a2a2a; --ah-accent: #4a90e2;
+  --ah-nav: #1a1a1a; --ah-icon: #b0b0b0; --ah-icon-on: #8f8f8f;
+}
+.ah-header {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 84px;
+  padding: 34px 12px 0;
+  background: var(--ah-hbg);
+  color: var(--ah-hfg);
+  border-bottom: 1px solid rgba(255, 255, 255, .16);
+}
+.ah-me { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--ah-hover); color: var(--ah-text); }
+.ah-me .ico { width: 15px; height: 15px; }
+.ah-mark { width: 32px; height: 32px; color: var(--ah-accent); }
+.ah-toggle { position: relative; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; }
+.ah-toggle svg { width: 19px; height: 19px; }
+.to-ame { background: #2d2d2d; color: #4a90e2; }
+.to-hare { background: #7db9de; color: #f9d05e; }
+.ah-dot { position: absolute; top: 2px; right: 1px; width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 2px #2d2d2d; }
+[data-step="3"] .s3 .ah-dot { animation: dot-pulse 1.8s ease-in-out .9s 3; }
+@keyframes dot-pulse { 50% { transform: scale(1.35); } }
+.ah-list { flex: 1; min-height: 0; overflow: hidden; }
+.ah-post { display: flex; gap: 8px; padding: 10px 11px; border-bottom: 1px solid var(--ah-line); background: var(--ah-card); }
+.ah-post > div { flex: 1; min-width: 0; }
+.ah-av { flex: none; width: 28px; height: 28px; border-radius: 50%; }
+.av-c { background: linear-gradient(140deg, #fde2c7, #f3b07c); }
+.av-d { background: linear-gradient(140deg, #d8ecf8, #7db9de); }
+.av-e { background: linear-gradient(140deg, #4b5563, #9ca3af); }
+.av-f { background: linear-gradient(140deg, #374151, #6b8fb5); }
+.av-g { background: linear-gradient(140deg, #fbe7ef, #d17da3); }
+.av-me { background: linear-gradient(140deg, #cfe3d4, #889a82); }
+.ah-meta { display: flex; align-items: baseline; gap: 4px; overflow: hidden; color: var(--ah-sub); font-size: 10.5px; white-space: nowrap; }
+.ah-meta b { color: var(--ah-text); font-size: 11.5px; }
+.ah-text { margin-top: 2px; font-size: 12.5px; line-height: 1.55; }
+.ah-acts { display: flex; align-items: center; gap: 12px; margin: 5px 0 0 -6px; color: var(--ah-sub); font-size: 11px; }
+.ah-acts span { display: inline-flex; align-items: center; gap: 4px; padding: 2px 6px; border-radius: 999px; }
+.ah-acts i { font-style: normal; font-size: 12px; }
 .ah-acts .ico { width: 13px; height: 13px; }
-.ah-acts.liked { color: #efc545; }
-.ah-acts.liked .ico { fill: currentColor; }
+.ah-acts .tea-on { background: #4a90e2; color: #fff; font-weight: 700; }
+.ah-acts .flower-on { background: #d8ecf8; color: #d17da3; font-weight: 700; }
+.ah-nav { flex: none; display: flex; align-items: center; justify-content: space-around; height: 46px; border-top: 1px solid var(--ah-line); background: var(--ah-nav); color: var(--ah-icon); }
+.ah-nav .ico { width: 19px; height: 19px; }
+.ah-nav .on { color: var(--ah-icon-on); stroke-width: 2.4; }
+.ah-fab { position: absolute; right: 12px; bottom: 58px; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--ah-accent); color: #fff; box-shadow: 0 4px 12px rgba(0, 0, 0, .2); }
+.ah-fab .ico { width: 18px; height: 18px; stroke-width: 2; }
+
+/* Writing a post: the sheet, the app's own hint, then the toast */
+.ah-overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, .48); opacity: 0; }
+.ah-sheet { position: absolute; left: 0; right: 0; bottom: 0; padding: 0 12px 12px; border-top: 1px solid #d7e1e8; border-radius: 14px 14px 0 0; background: #ebf1f5; transform: translateY(110%); }
+.ah-sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #d7e1e8; }
+.ah-close { width: 20px; height: 20px; color: #4a4a4a; }
+.ah-send { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #f9d05e; color: #4a4a4a; }
+.ah-send .ico { width: 16px; height: 16px; }
+.ah-sheet-body { display: flex; gap: 8px; padding: 10px 0; }
+.ah-editor { position: relative; flex: 1; min-height: 96px; font-size: 14px; line-height: 1.5; }
+.ah-ph, .ah-typed { position: absolute; inset: 0; }
+.ah-ph { color: #888; }
+.ah-typed { color: #4a4a4a; opacity: 0; }
+.ah .caret { background: #7db9de; }
+.ah-sheet-foot { display: flex; align-items: center; justify-content: space-between; color: #888; font-size: 11px; }
+.ah-sheet-foot .ico { width: 16px; height: 16px; }
+.ah-chip {
+  position: absolute;
+  left: 50%;
+  bottom: 58px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border: 1px solid var(--ah-line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-50%);
+}
+.ah-chip i { width: 12px; height: 12px; border: 2px solid #d7e1e8; border-top-color: #7db9de; border-radius: 50%; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.ah-toast {
+  position: absolute;
+  left: 8px; right: 8px;
+  bottom: 54px;
+  display: grid;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid #d7e1e8;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .14);
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0;
+}
+.ah-toast span { justify-self: end; padding: 3px 9px; border: 1px solid rgba(53, 80, 106, .14); border-radius: 999px; background: #fff; color: #35506a; font-size: 11px; font-weight: 700; }
+[data-step="1"] .s1 .ah-overlay { animation: ah-overlay 2.9s ease .2s both; }
+[data-step="1"] .s1 .ah-sheet { animation: ah-sheet 2.9s var(--ease) .2s both; }
+[data-step="1"] .s1 .ah-ph { animation: ah-out .3s ease 1.1s both; }
+[data-step="1"] .s1 .ah-typed { animation: ah-in .35s ease 1.3s both; }
+[data-step="1"] .s1 .ah-send { animation: ah-send .7s ease 1.9s both; }
+[data-step="1"] .s1 .ah-chip { animation: ah-chip 1.1s ease 3s both; }
+[data-step="1"] .s1 .ah-toast { animation: pop .5s var(--ease) 4s both; }
+@keyframes ah-overlay { 0% { opacity: 0; } 12%, 85% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes ah-sheet { 0% { transform: translateY(110%); } 14%, 84% { transform: none; } 100% { transform: translateY(110%); } }
+@keyframes ah-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ah-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes ah-send { 50% { transform: scale(.9); box-shadow: 0 0 0 6px rgba(249, 208, 94, .35); } }
+@keyframes ah-chip { 0% { opacity: 0; } 20%, 80% { opacity: 1; } 100% { opacity: 0; } }
 
 .features { position: relative; display: grid; gap: 10px; }
 .feature {
