@@ -48,6 +48,7 @@
     <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
     <symbol id="i-send" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
     <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2.5c.7 4.6 2.9 6.8 7.5 7.5v1.9c-4.6.7-6.8 2.9-7.5 7.5h-1.9c-.7-4.6-2.9-6.8-7.5-7.5V10c4.6-.7 6.8-2.9 7.5-7.5z"/></symbol>
     <symbol id="i-rain" viewBox="0 0 24 24"><path d="M18.5 15.5a4.5 4.5 0 0 0-1-8.9A6 6 0 0 0 6 8.5a3.5 3.5 0 0 0 .5 7"/><path d="M8.5 18.5l-1 2M12.5 18.5l-1 2M16.5 18.5l-1 2"/></symbol>
   </svg>
 
@@ -59,14 +60,14 @@
       </a>
       <nav class="header-nav" aria-label="メイン">
         <ul>
-          <li><a href="#why">なぜ</a></li>
-          <li><a href="#vision">ビジョン</a></li>
-          <li><a href="#products">プロダクト</a></li>
-          <li><a href="#next">これから</a></li>
-          <li><a href="#about">うみねこのこと</a></li>
+          <li><a href="#why">Why</a></li>
+          <li><a href="#vision">Vision</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#next">Future</a></li>
+          <li><a href="#about">About</a></li>
         </ul>
       </nav>
-      <a class="header-cta" href="#try">つかってみる</a>
+      <a class="header-cta" href="#try">Try it</a>
       <button class="menu-btn" type="button" aria-haspopup="dialog" aria-controls="menu" aria-expanded="false" data-menu-open>
         <span class="menu-icon" aria-hidden="true"></span><span class="vh">メニューをひらく</span>
       </button>
@@ -78,19 +79,19 @@
     <div class="menu-inner">
       <div class="menu-top">
         <span class="brand"><img src="/assets/logo-128.png" width="30" height="30" alt=""><span class="brand-name">うみねこ</span></span>
-        <button class="menu-close" type="button" data-menu-close><span aria-hidden="true"></span>とじる</button>
+        <button class="menu-close" type="button" data-menu-close aria-label="メニューをとじる"><span aria-hidden="true"></span>Close</button>
       </div>
       <nav aria-label="メニュー">
         <ol class="menu-list">
-          <li><a href="#why"><span>01</span>なぜ</a></li>
-          <li><a href="#vision"><span>02</span>ビジョン</a></li>
-          <li><a href="#products"><span>03</span>プロダクト</a></li>
-          <li><a href="#next"><span>04</span>これから</a></li>
-          <li><a href="#about"><span>05</span>うみねこのこと</a></li>
-          <li><a href="#try"><span>06</span>つかってみる</a></li>
+          <li><a href="#why"><span class="menu-num">01</span><span class="menu-en">Why</span><span class="menu-ja">なぜ</span></a></li>
+          <li><a href="#vision"><span class="menu-num">02</span><span class="menu-en">Vision</span><span class="menu-ja">ビジョン</span></a></li>
+          <li><a href="#products"><span class="menu-num">03</span><span class="menu-en">Products</span><span class="menu-ja">プロダクト</span></a></li>
+          <li><a href="#next"><span class="menu-num">04</span><span class="menu-en">Future</span><span class="menu-ja">これから</span></a></li>
+          <li><a href="#about"><span class="menu-num">05</span><span class="menu-en">About</span><span class="menu-ja">うみねこのこと</span></a></li>
+          <li><a href="#try"><span class="menu-num">06</span><span class="menu-en">Try it</span><span class="menu-ja">つかってみる</span></a></li>
         </ol>
       </nav>
-      <p class="menu-foot"><a href="/operator/">事業者情報</a><a href="#contact">お問い合わせ</a></p>
+      <p class="menu-foot"><a href="/operator/">事業者情報</a><a href="#contact">Contact</a></p>
       <svg class="menu-gull" aria-hidden="true"><use href="#gull"/></svg>
     </div>
   </dialog>
@@ -110,7 +111,7 @@
         </div>
       </div>
       <div class="wrap hero-inner">
-        <p class="eyebrow">うみねこのビジョン</p>
+        <p class="eyebrow">Our vision</p>
         <h1 class="hero-title" id="hero-title">
           <span class="ln">人類から、</span>
           <span class="ln"><span class="ph">コミュニケーション</span><span class="ph">コストを</span></span>
@@ -127,7 +128,7 @@
     <section class="section why tone-paper" id="why" data-tone="paper" aria-labelledby="why-title">
       <div class="wrap">
         <header class="sec-head" data-reveal>
-          <p class="sec-label"><span class="num">01</span>なぜ</p>
+          <p class="sec-label"><span class="num">01</span>Why</p>
           <h2 id="why-title"><span class="ph">伝えたい気持ちは、</span><span class="ph">誰にでもある。</span></h2>
           <p class="lead">それなのに、伝わり方には大きな差があります。</p>
         </header>
@@ -149,15 +150,23 @@
               <span class="thought t4">ほんとうは、もっと話したい</span>
             </div>
             <div class="spoken"><span>……うん、楽しかった。</span></div>
-            <div class="gap">
-              <p class="gap-title"><span class="ph">コミュニケーションにかかるコスト</span><span class="ph">（イメージ）</span></p>
-              <div class="gap-row"><span class="gap-label">伝えるのが得意な人</span><span class="gap-bar"><i style="--w:.22"></i></span></div>
-              <div class="gap-row is-heavy"><span class="gap-label">伝えるのが苦手な人</span><span class="gap-bar"><i style="--w:.9"></i></span></div>
-            </div>
-            <div class="zero">
-              <span class="zero-ring"></span><span class="zero-ring"></span>
-              <span class="zero-num">0</span>
-              <span class="zero-label">コミュニケーションコスト</span>
+            <div class="talks">
+              <div class="talk-row">
+                <p class="talk-who"><i class="talk-av"></i>伝えるのが得意な人</p>
+                <p class="talk-say">すごく楽しかった！また行こうね！</p>
+                <p class="talk-reply">うん、行こう！</p>
+              </div>
+              <div class="talk-row talk-hard">
+                <p class="talk-who"><i class="talk-av"></i>伝えるのが苦手な人</p>
+                <div class="talk-swap talk-swap-say">
+                  <p class="talk-say before">……うん、楽しかった。</p>
+                  <p class="talk-say after"><svg class="ico"><use href="#i-spark"/></svg>ほんとうは、すごく楽しかった。また行きたいな。</p>
+                </div>
+                <div class="talk-swap talk-swap-reply">
+                  <p class="talk-reply before">……そっか。</p>
+                  <p class="talk-reply after">うれしい！また行こうね！</p>
+                </div>
+              </div>
             </div>
             <span class="tap-hint stepper-ui"><span class="hint-touch">タップで次へ</span><span class="hint-click">クリックで次へ</span></span>
           </div>
@@ -174,7 +183,7 @@
               </li>
               <li data-item>
                 <h3><span class="ph">伝え方の差が、</span><span class="ph">そのまま損になる。</span></h3>
-                <p>伝えるのが得意な人は、すっと分かってもらえる。苦手な人は、同じことを伝えるだけで、大きなコストを払っている。気持ちの大きさは、変わらないのに。</p>
+                <p>伝えるのが得意な人は、すっと分かってもらえる。苦手な人は、同じ気持ちでも、うまく伝わらずに終わってしまう。気持ちの大きさは、変わらないのに。</p>
               </li>
               <li data-item>
                 <h3><span class="ph">その差を、</span><span class="ph">ゼロにする。</span></h3>
@@ -195,7 +204,7 @@
     <section class="section vision tone-blue" id="vision" data-tone="blue" aria-labelledby="vision-title">
       <div class="wrap">
         <header class="sec-head" data-reveal>
-          <p class="sec-label"><span class="num">02</span>ビジョン</p>
+          <p class="sec-label"><span class="num">02</span>Vision</p>
           <h2 id="vision-title"><span class="ph">繊細さも、</span><span class="ph">熱さも、</span><span class="ph">そのままで。</span></h2>
           <p class="lead">「もっと鈍感になればいい」とは思いません。変わるべきなのは人ではなく、気持ちが伝わるまでの仕組みのほうです。伝えるのが苦手な人が、苦手なままでも分かってもらえるように。うみねこは、そのためのプロダクトをつくります。</p>
         </header>
@@ -223,33 +232,19 @@
     <section class="section products tone-paper" id="products" data-tone="paper" aria-labelledby="products-title">
       <div class="wrap">
         <header class="sec-head" data-reveal>
-          <p class="sec-label"><span class="num">03</span>プロダクト</p>
+          <p class="sec-label"><span class="num">03</span>Products</p>
           <h2 id="products-title">いま、つくっているもの</h2>
           <p class="lead">AIで、伝えるハードルを下げる。場の仕組みで、伝える負担を軽くする。手段は違っても、目指す場所は同じです。</p>
         </header>
 
-        <div class="product-switch" data-tabs data-active="0">
-          <div class="tabs" role="tablist" aria-label="プロダクトを選ぶ" data-reveal>
-            <button class="tab" type="button" role="tab" id="tab-zetter" aria-controls="panel-zetter" aria-selected="true">
-              <span class="tab-num">No.01</span>
-              <img src="/assets/zetter-mark-160.png" width="44" height="44" alt="">
-              <span class="tab-body"><span class="tab-name">Zetter</span><span class="tab-meta">AIキャラと話せる<span class="ph">チャット・SNS</span></span></span>
-              <svg class="ico tab-arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-            </button>
-            <button class="tab" type="button" role="tab" id="tab-amehare" aria-controls="panel-amehare" aria-selected="false" tabindex="-1">
-              <span class="tab-num">No.02</span>
-              <img src="/assets/amehare-mark-160.png" width="44" height="44" alt="">
-              <span class="tab-body"><span class="tab-name">あめ→はれ</span><span class="tab-meta"><span class="ph">気持ちで表示先が</span><span class="ph">切り替わるSNS</span></span></span>
-              <svg class="ico tab-arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-            </button>
-          </div>
-
-          <article class="product product-zetter" id="panel-zetter" role="tabpanel" aria-labelledby="tab-zetter" data-stepper data-step="1">
-            <div class="p-head">
+        <div class="product-list">
+          <article class="product product-zetter" id="zetter" aria-labelledby="zetter-name" data-stepper data-step="1">
+            <div class="p-head" data-reveal>
+              <p class="product-num">No.01</p>
               <div class="p-title">
                 <img class="p-mark" src="/assets/zetter-mark-160.png" width="56" height="56" alt="">
                 <div>
-                  <h3 class="p-name">Zetter</h3>
+                  <h3 class="p-name" id="zetter-name">Zetter</h3>
                   <p class="p-role">企画・開発・運営</p>
                 </div>
               </div>
@@ -310,12 +305,13 @@
             </div>
           </article>
 
-          <article class="product product-amehare" id="panel-amehare" role="tabpanel" aria-labelledby="tab-amehare" data-stepper data-step="1">
-            <div class="p-head">
+          <article class="product product-amehare" id="amehare" aria-labelledby="amehare-name" data-stepper data-step="1">
+            <div class="p-head" data-reveal>
+              <p class="product-num">No.02</p>
               <div class="p-title">
                 <img class="p-mark" src="/assets/amehare-mark-160.png" width="56" height="56" alt="">
                 <div>
-                  <h3 class="p-name">あめ→はれ</h3>
+                  <h3 class="p-name" id="amehare-name">あめ→はれ</h3>
                   <p class="p-role">開発<span>運営：しゃち</span></p>
                 </div>
               </div>
@@ -380,7 +376,7 @@
     <section class="section next tone-night" id="next" data-tone="night" aria-labelledby="next-title" data-pause>
       <div class="wrap next-grid">
         <header class="sec-head" data-reveal>
-          <p class="sec-label"><span class="num">04</span>これから</p>
+          <p class="sec-label"><span class="num">04</span>Future</p>
           <h2 id="next-title"><span class="ph">あなたを</span><span class="ph">分かっている</span><span class="ph">AIが、</span><span class="ph">人と人をつなぐ。</span></h2>
           <p class="lead">いま考えているのは、一人ひとりのそばに、その人のことをよく分かっているAIパートナーがいる世界です。Zetterの中で、少しずつかたちにしていきます。</p>
           <p class="concept-note"><span class="chip">構想</span><span>構想段階のため、内容は変わることがあります。</span></p>
@@ -452,7 +448,7 @@
       <div class="wrap about-grid">
         <div class="about-main">
           <header class="sec-head" data-reveal>
-            <p class="sec-label"><span class="num">05</span>うみねこのこと</p>
+            <p class="sec-label"><span class="num">05</span>About</p>
             <h2 id="about-title">つくり手より</h2>
           </header>
           <div class="letter" data-reveal>
@@ -497,7 +493,7 @@
     <section class="section try tone-blue" id="try" data-tone="blue" aria-labelledby="try-title">
       <div class="wrap">
         <header class="sec-head" data-reveal>
-          <p class="sec-label"><span class="num">06</span>つかってみる</p>
+          <p class="sec-label"><span class="num">06</span>Try it</p>
           <h2 id="try-title"><span class="ph">まずは、</span><span class="ph">さわって</span><span class="ph">みてください。</span></h2>
           <p class="lead">どちらも、ブラウザからすぐに使えます。</p>
         </header>
@@ -545,12 +541,12 @@
       <p class="footer-vision">人類から、<br><span class="ph">コミュニケーション</span><span class="ph">コストを</span><br>ゼロにする。</p>
       <nav class="footer-nav" aria-label="フッター">
         <ul>
-          <li><a href="#why">なぜ</a></li>
-          <li><a href="#vision">ビジョン</a></li>
-          <li><a href="#products">プロダクト</a></li>
-          <li><a href="#next">これから</a></li>
-          <li><a href="#about">うみねこのこと</a></li>
-          <li><a href="#contact">お問い合わせ</a></li>
+          <li><a href="#why">Why</a></li>
+          <li><a href="#vision">Vision</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#next">Future</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
         <ul>
           <li><a href="https://z-etter.com/" target="_blank" rel="noopener noreferrer">Zetter<span class="vh">（新しいタブ）</span></a></li>

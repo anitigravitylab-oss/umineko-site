@@ -3,7 +3,7 @@
 
 python3 tests/check_site.py
 
-Browser behaviour (layout widths, steppers, tabs, menu, copy, no-JS) is covered
+Browser behaviour (layout widths, steppers, menu, copy, no-JS) is covered
 separately by `node tests/browser_check.cjs`.
 """
 from __future__ import annotations
@@ -132,13 +132,11 @@ def main() -> int:
     index = docs['index.html']
     for section in ['top', 'why', 'vision', 'products', 'next', 'about', 'try', 'contact']:
         c.ok(section in index_ids, f'index.html: missing #{section}')
-    tabs = [a for t, a in index.nodes if a.get('role') == 'tab']
-    panels = {a['id']: a for t, a in index.nodes if a.get('role') == 'tabpanel'}
-    c.ok(len(tabs) == 2 and len(panels) == 2, 'index.html: two product tabs and panels')
-    for tab in tabs:
-        panel = panels.get(tab.get('aria-controls') or '')
-        c.ok(panel is not None and panel.get('aria-labelledby') == tab.get('id'), f'index.html: tab {tab.get("id")} and its panel do not reference each other')
-    c.ok(not any('hidden' in a for a in panels.values()), 'index.html: panels must be visible without JavaScript')
+    products = [a for t, a in index.nodes if t == 'article' and 'product' in (a.get('class') or '').split()]
+    c.ok([a.get('id') for a in products] == ['zetter', 'amehare'], 'index.html: Zetter and あめ→はれ are listed in order')
+    for a in products:
+        c.ok(a.get('aria-labelledby') in index_ids, f'index.html: product {a.get("id")} has no heading')
+        c.ok('hidden' not in a, f'index.html: product {a.get("id")} must not be hidden')
     c.ok(sum(1 for t, a in index.nodes if 'data-stepper' in a) == 4, 'index.html: expected 4 steppers')
     copies = [a.get('data-copy') for t, a in index.nodes if 'data-copy' in a]
     c.ok(copies == [EMAIL], 'index.html: copy button carries the contact address')

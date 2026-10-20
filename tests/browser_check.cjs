@@ -76,7 +76,7 @@ async function layoutChecks(browser, base) {
     }
     // Text inside cards and buttons must not spill out of its box
     await page.goto(base + '/', { waitUntil: 'networkidle' });
-    const spills = await page.evaluate(() => [...document.querySelectorAll('.btn, .tab, .feature, .principle, .try-card, .step-bars, .stepper-nav')]
+    const spills = await page.evaluate(() => [...document.querySelectorAll('.btn, .feature, .principle, .try-card, .step-bars, .stepper-nav')]
       .filter((el) => el.offsetParent && el.scrollWidth > el.clientWidth + 1)
       .map((el) => el.className));
     check(spills.length === 0, `${width}px: content overflows ${spills.join(', ')}`);
@@ -146,31 +146,27 @@ async function interactionChecks(browser, base, width) {
   await page.locator('.story [data-goto="1"]').click();
   check(await story.getAttribute('data-step') === '1', `${label} story: progress bar jumps to a step`);
 
-  // Product tabs and walkthroughs
-  const zetter = page.locator('#panel-zetter');
-  const amehare = page.locator('#panel-amehare');
-  check(await zetter.isVisible() && !(await amehare.isVisible()), `${label} products: Zetter shown first`);
-  await page.locator('#tab-amehare').click();
-  check(await amehare.isVisible() && !(await zetter.isVisible()), `${label} products: tab switches panel`);
-  check(await page.locator('#tab-amehare').getAttribute('aria-selected') === 'true', `${label} products: aria-selected follows`);
-  await page.locator('#tab-amehare').press('ArrowLeft');
-  check(await zetter.isVisible(), `${label} products: arrow keys move between tabs`);
-  check(await page.evaluate(() => document.activeElement.id) === 'tab-zetter', `${label} products: focus follows the selected tab`);
-  for (const step of ['3', '2', '1', '3']) {
-    await page.locator(`#panel-zetter .feature-btn[data-goto="${step}"]`).click();
-    check(await zetter.getAttribute('data-step') === step, `${label} products: feature ${step} selects screen ${step}`);
-    check(await page.locator(`#panel-zetter .feature-btn[data-goto="${step}"]`).getAttribute('aria-pressed') === 'true', `${label} products: aria-pressed on ${step}`);
+  // Products: both listed, each with its own walkthrough
+  const zetter = page.locator('#zetter');
+  const amehare = page.locator('#amehare');
+  check(await zetter.isVisible() && await amehare.isVisible(), `${label} products: both products are listed`);
+  for (const [panel, steps] of [['#zetter', ['3', '2', '1', '3']], ['#amehare', ['2', '3']]]) {
+    for (const step of steps) {
+      await page.locator(`${panel} .feature-btn[data-goto="${step}"]`).click();
+      check(await page.locator(panel).getAttribute('data-step') === step, `${label} products: ${panel} feature ${step} selects screen ${step}`);
+      check(await page.locator(`${panel} .feature-btn[data-goto="${step}"]`).getAttribute('aria-pressed') === 'true', `${label} products: aria-pressed on ${panel} ${step}`);
+    }
   }
   await page.waitForTimeout(1200);
   const activeCardVisible = await page.evaluate(() => {
-    const list = document.querySelector('#panel-zetter .features');
+    const list = document.querySelector('#zetter .features');
     const card = list.querySelector('.feature.is-active');
     const a = list.getBoundingClientRect();
     const b = card.getBoundingClientRect();
     return b.left >= a.left - 2 && b.right <= a.right + 2;
   });
   check(activeCardVisible, `${label} products: the active feature card is in view`);
-  await page.locator('#panel-zetter .p-device').click();
+  await page.locator('#zetter .p-device').click();
   check(await zetter.getAttribute('data-step') === '1', `${label} products: tapping the phone cycles screens`);
 
   // Concept stepper
@@ -234,8 +230,7 @@ async function fallbackChecks(browser, base) {
   await page.goto(base + '/', { waitUntil: 'networkidle' });
   check(await page.locator('.story-steps > li:visible').count() === 4, 'no-JS: all story steps visible');
   check(await page.locator('.concept-steps > li:visible').count() === 3, 'no-JS: all concept steps visible');
-  check(await page.locator('#panel-zetter').isVisible() && await page.locator('#panel-amehare').isVisible(), 'no-JS: both products visible');
-  check(!(await page.locator('[role="tablist"]').isVisible()), 'no-JS: tab bar hidden');
+  check(await page.locator('#zetter').isVisible() && await page.locator('#amehare').isVisible(), 'no-JS: both products visible');
   check(!(await page.locator('.stepper-nav').first().isVisible()), 'no-JS: step controls hidden');
   check(!(await page.locator('[data-copy]').isVisible()) && await page.locator('.mail-link').isVisible(), 'no-JS: mail link without copy button');
   check(await page.locator('#hero-title').isVisible(), 'no-JS: hero visible');

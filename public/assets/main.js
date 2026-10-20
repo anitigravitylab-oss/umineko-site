@@ -281,32 +281,6 @@
   };
   document.querySelectorAll('[data-stepper]').forEach(setupStepper);
 
-  /* Product tabs */
-  document.querySelectorAll('[data-tabs]').forEach((el) => {
-    const tabs = [...el.querySelectorAll('[role="tab"]')];
-    const panels = tabs.map((tab) => document.getElementById(tab.getAttribute('aria-controls')));
-    const select = (index, focus) => {
-      tabs.forEach((tab, i) => {
-        const on = i === index;
-        tab.setAttribute('aria-selected', String(on));
-        tab.tabIndex = on ? 0 : -1;
-        if (panels[i]) panels[i].hidden = !on;
-      });
-      el.dataset.active = String(index);
-      if (focus) tabs[index].focus();
-    };
-    tabs.forEach((tab, i) => {
-      tab.addEventListener('click', () => select(i));
-      tab.addEventListener('keydown', (event) => {
-        const keys = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 };
-        if (!(event.key in keys)) return;
-        event.preventDefault();
-        select((keys[event.key] + tabs.length) % tabs.length, true);
-      });
-    });
-    select(Math.max(0, tabs.findIndex((tab) => tab.getAttribute('aria-selected') === 'true')));
-  });
-
   /* Name card flip */
   document.querySelectorAll('[data-flip]').forEach((card) => {
     const front = card.querySelector('[data-flip-front]');
