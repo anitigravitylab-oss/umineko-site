@@ -395,25 +395,11 @@ html:not(.js) .js-only { display: none !important; }
   animation: glide 8s ease-in-out infinite alternate;
 }
 .hero-gull { width: 100%; height: auto; aspect-ratio: 773 / 688; color: #fff; transform: rotate(-6deg); }
-.hero-bubble {
-  position: absolute;
-  top: -8%;
-  right: -16%;
-  padding: 5px 13px;
-  border-radius: 16px 16px 16px 4px;
-  background: #fff;
-  color: var(--blue);
-  font-size: clamp(12px, 3.6vw, 15px);
-  font-weight: 800;
-  white-space: nowrap;
-  animation: bubble 3.6s ease-in-out infinite;
-}
 @keyframes glide {
   0% { transform: translate(0, 0) rotate(0); }
   50% { transform: translate(-8px, -10px) rotate(-2deg); }
   100% { transform: translate(-16px, 2px) rotate(1deg); }
 }
-@keyframes bubble { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(3deg) translateY(-3px); } }
 .eyebrow { margin-bottom: 16px; color: var(--accent); font-size: 14px; font-weight: 700; letter-spacing: .06em; }
 .hero-title {
   font-size: clamp(30px, 9.4vw, 92px);
@@ -1048,16 +1034,6 @@ html:not(.js) .flip-btn { cursor: default; }
 }
 .name-visual { position: absolute; top: 40px; right: 34px; }
 .name-gull { width: 112px; height: 100px; color: #fff; animation: glide 7s ease-in-out infinite alternate; }
-.name-bubble {
-  position: absolute;
-  top: -16px; left: -58px;
-  padding: 4px 12px;
-  border-radius: 14px 14px 4px 14px;
-  background: #fff;
-  color: var(--blue);
-  font-size: 13px;
-  font-weight: 800;
-}
 .name-q { position: relative; font-size: 24px; font-weight: 800; letter-spacing: -.01em; }
 .name-hint { position: relative; margin-top: 2px; color: rgba(255, 255, 255, .72); font-size: 13px; font-weight: 700; }
 .flip-back {
