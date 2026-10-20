@@ -4,7 +4,7 @@
 
 ## 構成
 
-HTML、CSS、少量のJavaScriptだけで作った静的サイトです。ビルドの工程はありません。外部のスクリプトやライブラリー、CDNは使っていません。フォント（Pretendard JP）も、サイトで使う文字に絞ったものを同梱しています。配信はCloudflare Workersの静的アセットで、`wrangler.toml` は変更していません。
+HTML、CSS、少量のJavaScriptだけで作った静的サイトです。ビルドの工程はありません。外部のスクリプトやライブラリー、CDNは使っていません。フォント（和文は Pretendard JP、数字は Instrument Serif）も、サイトで使う文字に絞ったものを同梱しています。配信はCloudflare Workersの静的アセットで、`wrangler.toml` は変更していません。
 
 - `public/index.html`：トップページ。次の6章でできています。
   - 01 なぜ：タップで進む4ステップのストーリー
@@ -18,7 +18,7 @@ HTML、CSS、少量のJavaScriptだけで作った静的サイトです。ビル
 - `public/assets/main.css`：配色・余白・レイアウト・動き。色は先頭のカスタムプロパティで調整できます。
 - `public/assets/main.js`：メニュー、ステップ表示、タブ、カード切り替え、名前カード、メールアドレスのコピー、スクロール演出
 - `public/assets/og.png`：SNS共有用の画像（1200×630）
-- `public/assets/fonts/`：Pretendard JP をサイトで使う文字だけに絞ったもの（`PretendardJP-subset.woff2`）と、そのライセンス（`OFL.txt`）
+- `public/assets/fonts/`：Pretendard JP と Instrument Serif Italic を、サイトで使う文字だけに絞ったものと、それぞれのライセンス（`OFL-*.txt`）
 - `tools/build_font.py`：上のフォントを作り直すスクリプト。本文の文字を変えたら実行してください（`pip install fonttools brotli` が必要）
 - `public/assets/logo-*.png`, `*-mark-160.png`：ロゴとサービスマークの縮小版
 - `public/_headers`, `robots.txt`, `sitemap.xml`：配信ヘッダーと検索エンジン向けの設定
@@ -74,9 +74,10 @@ node tests/browser_check.cjs --screenshots /tmp/umineko  # 全幅のスクリー
   - あめ→はれ：開発（運営：しゃち）
 - 画面イメージの投稿・会話・人物名はすべて架空のサンプルです。
 - 利用者数・料金・モデル名など、変わりやすい数値は載せていません。
-- 連絡先を変えるときは、次の2か所を両方とも更新してください。
+- 連絡先は、うみねこが contact@umineko.dev、Zetter が contact@z-etter.com です。変えるときは次の3か所を更新してください。
   - 全ページの `mailto:`
-  - トップページの `data-copy`
+  - トップページの `data-copy` と JSON-LD
+  - テストの `EMAIL`
 
 ## 公開
 

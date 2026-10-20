@@ -9,6 +9,8 @@
   /* Header: background after scrolling, reading progress */
   const header = document.querySelector('[data-header]');
   const progress = document.querySelector('[data-progress]');
+  const tones = [...document.querySelectorAll('main [data-tone], footer[data-tone]')];
+  const parallax = document.querySelector('[data-parallax]');
   let ticking = false;
   const onScroll = () => {
     if (ticking) return;
@@ -16,10 +18,22 @@
     requestAnimationFrame(() => {
       ticking = false;
       const y = window.scrollY;
-      if (header) header.classList.toggle('is-scrolled', y > 8);
+      if (header) {
+        header.classList.toggle('is-scrolled', y > 8);
+        // Header colours follow the block underneath it
+        const probe = header.offsetHeight / 2;
+        const under = tones.find((el) => {
+          const r = el.getBoundingClientRect();
+          return r.top <= probe && r.bottom > probe;
+        });
+        if (under) header.dataset.tone = under.dataset.tone;
+      }
       if (progress) {
         const max = root.scrollHeight - window.innerHeight;
         progress.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`;
+      }
+      if (parallax && !reduceMotion.matches && y < window.innerHeight * 1.2) {
+        parallax.style.setProperty('--py', (y * 0.18).toFixed(1));
       }
     });
   };
@@ -292,27 +306,6 @@
     });
     select(Math.max(0, tabs.findIndex((tab) => tab.getAttribute('aria-selected') === 'true')));
   });
-
-  /* Hero: ripples spread from the word ゼロ */
-  const zero = document.querySelector('[data-zero]');
-  const ripples = document.querySelector('[data-ripples]');
-  if (zero && ripples) {
-    // Layout offsets ignore the entrance animation's transforms
-    const place = () => {
-      const host = ripples.offsetParent;
-      let x = zero.offsetWidth / 2;
-      let y = zero.offsetHeight / 2;
-      for (let el = zero; el && el !== host; el = el.offsetParent) {
-        x += el.offsetLeft;
-        y += el.offsetTop;
-      }
-      ripples.style.left = `${x}px`;
-      ripples.style.top = `${y}px`;
-    };
-    place();
-    window.addEventListener('resize', place);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
-  }
 
   /* Name card flip */
   document.querySelectorAll('[data-flip]').forEach((card) => {

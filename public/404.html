@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>ページが見つかりません｜うみねこ</title>
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#0b2bb0">
   <link rel="icon" href="/assets/logo-circle-64.png" type="image/png">
   <link rel="preload" href="/assets/fonts/PretendardJP-subset.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/main.css?v=20261020c">
+  <link rel="preload" href="/assets/fonts/InstrumentSerif-Italic-subset.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/main.css?v=20261020d">
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header" data-tone="blue">
     <div class="header-bar">
       <a class="brand" href="/" aria-label="うみねこ ホーム">
         <img src="/assets/logo-128.png" width="30" height="30" alt="">
@@ -19,13 +20,12 @@
       </a>
     </div>
   </header>
-  <main class="notfound" id="main">
-    <div class="hero-ripples" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <main class="notfound tone-blue" id="main">
     <div class="notfound-inner">
-      <p class="notfound-code">404</p>
+      <p class="notfound-code" aria-hidden="true">404</p>
       <h1><span class="ph">このページは、</span><span class="ph">見つかりませんでした。</span></h1>
       <p>移動したか、なくなったのかもしれません。</p>
-      <a class="btn btn-primary" href="/">ホームへ戻る</a>
+      <a class="btn btn-light" href="/">ホームへ戻る</a>
     </div>
   </main>
 </body>

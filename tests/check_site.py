@@ -20,7 +20,8 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / 'public'
 PAGES = ['index.html', 'operator/index.html', '404.html']
-EMAIL = 'ymdtkru@gmail.com'
+EMAIL = 'contact@umineko.dev'
+ZETTER_EMAIL = 'contact@z-etter.com'
 
 
 class Markup(HTMLParser):
@@ -121,7 +122,7 @@ def main() -> int:
                 elif url.startswith('/#'):
                     c.ok(url[2:] in index_ids, f'{name}: {url} has no target on the top page')
                 elif url.startswith('mailto:'):
-                    c.ok(url == f'mailto:{EMAIL}', f'{name}: unexpected address {url}')
+                    c.ok(url in (f'mailto:{EMAIL}', f'mailto:{ZETTER_EMAIL}'), f'{name}: unexpected address {url}')
                 else:
                     path = local_path(url)
                     if path is not None and not url.startswith('/#'):
@@ -162,7 +163,9 @@ def main() -> int:
     # Web font: self-hosted subset that covers every character on the pages
     font = PUBLIC / 'assets/fonts/PretendardJP-subset.woff2'
     c.ok(font.exists(), 'web font subset is missing (run tools/build_font.py)')
-    c.ok((PUBLIC / 'assets/fonts/OFL.txt').exists(), 'font license (OFL.txt) is missing')
+    c.ok((PUBLIC / 'assets/fonts/InstrumentSerif-Italic-subset.woff2').exists(), 'serif font subset is missing (run tools/build_font.py)')
+    for license_file in ('OFL-Pretendard.txt', 'OFL-InstrumentSerif.txt'):
+        c.ok((PUBLIC / 'assets/fonts' / license_file).exists(), f'font license {license_file} is missing')
     for name in PAGES:
         c.ok('PretendardJP-subset.woff2' in raw[name], f'{name}: font is not preloaded')
     try:

@@ -18,7 +18,7 @@ const { chromium } = require('playwright');
 const PUBLIC = path.resolve(__dirname, '..', 'public');
 const TYPES = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.png': 'image/png', '.woff2': 'font/woff2', '.xml': 'application/xml', '.txt': 'text/plain' };
 const WIDTHS = [320, 375, 390, 768, 1024, 1440, 1920];
-const EMAIL = 'ymdtkru@gmail.com';
+const EMAIL = 'contact@umineko.dev';
 const shotDir = (() => {
   const i = process.argv.indexOf('--screenshots');
   return i > -1 ? process.argv[i + 1] : null;
@@ -80,6 +80,15 @@ async function layoutChecks(browser, base) {
       .filter((el) => el.offsetParent && el.scrollWidth > el.clientWidth + 1)
       .map((el) => el.className));
     check(spills.length === 0, `${width}px: content overflows ${spills.join(', ')}`);
+    // Unbreakable phrases (.ph) must fit inside their line, even where a section clips overflow
+    const phrases = await page.evaluate(() => [...document.querySelectorAll('.ph')]
+      .filter((el) => el.offsetParent)
+      .filter((el) => {
+        const box = el.parentElement.closest('h1, h2, h3, p, li, button, a, span:not(.ph), div').getBoundingClientRect();
+        return el.getBoundingClientRect().right > box.right + 1;
+      })
+      .map((el) => el.textContent));
+    check(phrases.length === 0, `${width}px: phrases wider than their line: ${phrases.join(' / ')}`);
     check(errors.length === 0, `${width}px: console errors ${errors.join(' | ')}`);
     await context.close();
   }
@@ -95,16 +104,28 @@ async function interactionChecks(browser, base, width) {
   await revealAll(page);
   const label = `${width}px`;
 
-  // Web font
-  const fontReady = await page.evaluate(async () => { await document.fonts.ready; return document.fonts.check('700 32px "Pretendard JP"', '人類から'); });
-  check(fontReady, `${label} web font: Pretendard JP is loaded`);
-  const ripple = await page.evaluate(async () => {
-    await Promise.all([...document.querySelectorAll('.hero-title .ln')].flatMap((el) => el.getAnimations()).map((a) => a.finished));
-    const zero = document.querySelector('[data-zero]').getBoundingClientRect();
-    const rings = document.querySelector('[data-ripples]').getBoundingClientRect();
-    return Math.hypot(zero.left + zero.width / 2 - rings.left, zero.top + zero.height / 2 - rings.top);
+  // Web fonts
+  const fonts = await page.evaluate(async () => {
+    await document.fonts.ready;
+    return [document.fonts.check('800 32px "Pretendard JP"', '人類から'), document.fonts.check('italic 40px "Instrument Serif"', '0')];
   });
-  check(ripple < 4, `${label} hero: ripples start from ゼロ (off by ${Math.round(ripple)}px)`);
+  check(fonts[0], `${label} web font: Pretendard JP is loaded`);
+  check(fonts[1], `${label} web font: Instrument Serif is loaded`);
+
+  // Hero mark and header colours that follow the block underneath
+  const mark = await page.evaluate(() => {
+    const r = document.querySelector('.hero-mark').getBoundingClientRect();
+    return r.width > 100 && r.bottom > 0 && r.top < innerHeight;
+  });
+  check(mark, `${label} hero: the 0 mark is in view`);
+  check(await page.locator('[data-header]').getAttribute('data-tone') === 'blue', `${label} header: starts on blue`);
+  for (const [id, tone] of [['why', 'paper'], ['vision', 'blue'], ['next', 'night']]) {
+    await page.evaluate((target) => { document.getElementById(target).scrollIntoView({ behavior: 'instant' }); window.scrollBy(0, 40); }, id);
+    await page.waitForTimeout(250);
+    check(await page.locator('[data-header]').getAttribute('data-tone') === tone, `${label} header: ${tone} over #${id}`);
+  }
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(200);
 
   // Story stepper
   const story = page.locator('.story');
@@ -227,7 +248,7 @@ async function fallbackChecks(browser, base) {
   await calmPage.goto(base + '/', { waitUntil: 'networkidle' });
   const hidden = await calmPage.evaluate(() => [...document.querySelectorAll('[data-reveal]')].filter((el) => getComputedStyle(el).opacity !== '1').length);
   check(hidden === 0, `reduced motion: ${hidden} sections still hidden`);
-  const ripple = await calmPage.evaluate(() => getComputedStyle(document.querySelector('.hero-ripples i')).animationIterationCount);
+  const ripple = await calmPage.evaluate(() => getComputedStyle(document.querySelector('.zero-echo')).animationIterationCount);
   check(ripple === '1', 'reduced motion: decorative loops stop');
   await calm.close();
 }
